@@ -90,6 +90,41 @@ Available” line is not reproduced as a live availability status.
 
 ---
 
+## Writing style
+
+The customer-facing copy follows a house rule: **no em dashes or hyphens used
+as a substitute for punctuation.** Sentences are built with full stops,
+commas, colons and brackets instead. This applies to headings, body copy,
+buttons, itinerary items, captions, form labels, error messages, the
+pre-filled WhatsApp messages and the `aria-label`s that screen readers announce.
+It does not apply to code identifiers, CSS, or en dashes inside date ranges
+such as 23–26 October, where the dash is correct typography rather than
+punctuation.
+
+Other conventions:
+
+- Sentence case for headings, never Title Case.
+- South African English spelling.
+- Uppercase is reserved for a small number of section labels. Image captions,
+  notes and meta lines are sentence case, because tracked capitals everywhere
+  made the page shout.
+- No invented history, awards, reviews, partnerships or traveller numbers.
+
+## Link previews (WhatsApp, Facebook, iMessage, Slack)
+
+`index.html` carries a full Open Graph and Twitter card set. Two things matter
+and are easy to break:
+
+1. **`og:image` must be an absolute `https://` URL.** A relative path is the
+   usual reason no picture appears when a link is pasted into WhatsApp.
+2. **Keep the image small.** `public/assets/img/og-image.jpg` is 1200×630 and
+   36 KB. WhatsApp quietly drops preview images much over about 300 KB.
+
+The absolute URLs point at `https://babees-lux-travel-v1.vercel.app/`. **If the
+site moves to a custom domain, update the four absolute URLs in `index.html`.**
+They are the only hard-coded URLs in the project, and there is a comment above
+them saying so.
+
 ## Editing the content
 
 **Packages, dates, prices, itinerary** — [`src/packages.js`](src/packages.js).

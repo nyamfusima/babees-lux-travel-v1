@@ -11,14 +11,57 @@
       content="Four days between Maputo and Bilene with Babee’s Lux Travel. R6 900 per person, including road transfer from Johannesburg, daily breakfast and a Maputo city tour. Enquire on WhatsApp."
     />
 
+    <!--
+      Link previews (WhatsApp, Facebook, LinkedIn, iMessage, Slack).
+
+      og:image MUST be an absolute https URL. WhatsApp does not resolve a
+      relative path, so a relative og:image is why no picture appears when the
+      link is pasted into a chat.
+
+      IF THE SITE MOVES TO A CUSTOM DOMAIN, change the four absolute URLs
+      below to the new domain. They are the only hard-coded URLs in the project.
+
+      og-image.jpg is 1200x630 (the ratio these scrapers expect) and 35 KB.
+      WhatsApp silently drops preview images much over ~300 KB, so keep any
+      replacement small.
+    -->
+    <link rel="canonical" href="https://babees-lux-travel-v1.vercel.app/" />
+
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Babee’s Lux Travel" />
+    <meta property="og:site_name" content="Babee’s Lux Travel" />
+    <meta property="og:locale" content="en_ZA" />
+    <meta property="og:url" content="https://babees-lux-travel-v1.vercel.app/" />
+    <meta property="og:title" content="Babee’s Lux Travel: four days in Mozambique" />
     <meta
       property="og:description"
-      content="Four days between Maputo and Bilene. R6 900 per person, travelling by road from Johannesburg."
+      content="From the streets of Maputo to the clear waters of Bilene. Four days from Johannesburg, R6 900 per person. Enquire on WhatsApp."
     />
-    <meta property="og:image" content="/assets/img/hero-dhow-sandbar-1600.jpg" />
+    <meta
+      property="og:image"
+      content="https://babees-lux-travel-v1.vercel.app/assets/img/og-image.jpg"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://babees-lux-travel-v1.vercel.app/assets/img/og-image.jpg"
+    />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="A traditional dhow moored in turquoise water beside a white sandbar."
+    />
+
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Babee’s Lux Travel: four days in Mozambique" />
+    <meta
+      name="twitter:description"
+      content="From the streets of Maputo to the clear waters of Bilene. Four days from Johannesburg, R6 900 per person."
+    />
+    <meta
+      name="twitter:image"
+      content="https://babees-lux-travel-v1.vercel.app/assets/img/og-image.jpg"
+    />
 
     <!-- Typographic wordmark as the tab icon; no raster favicon file to manage. -->
     <link
