@@ -17,7 +17,7 @@ export default function Tours({ onEnquire }) {
   return (
     <section className="section tours" id="tours" aria-labelledby="tours-title">
       <div className="shell">
-        <div className="grid12 tours__head">
+        <div className="grid12 tours__head reveal">
           <Label as="div" className="tours__label">
             The tour
           </Label>
@@ -69,7 +69,7 @@ export default function Tours({ onEnquire }) {
         </div>
 
         {/* ---- Departure dates ---- */}
-        <div className="departures" id="dates">
+        <div className="departures reveal" id="dates">
           <div className="departures__head">
             <h3>Departure dates</h3>
             <p>
@@ -114,7 +114,7 @@ export default function Tours({ onEnquire }) {
         </div>
 
         {/* ---- What is and is not included ---- */}
-        <div className="grid12 inclusions">
+        <div className="grid12 inclusions reveal">
           <div className="inclusions__col">
             <h3>What the price covers</h3>
             <ul className="ticks">

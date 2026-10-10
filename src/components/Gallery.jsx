@@ -78,7 +78,7 @@ export default function Gallery() {
   return (
     <section className="section gallery" id="gallery" aria-labelledby="gallery-title">
       <div className="shell">
-        <div className="grid12 gallery__head">
+        <div className="grid12 gallery__head reveal">
           <h2 id="gallery-title">
             A glimpse of
             <br />
@@ -90,7 +90,7 @@ export default function Gallery() {
           </p>
         </div>
 
-        <ul className="gallery__grid">
+        <ul className="gallery__grid reveal reveal--media" style={{ '--reveal-delay': '110ms' }}>
           {galleryItems.map((item, i) => (
             <li className={`gallery__cell gallery__cell--${item.span}`} key={item.src}>
               <button

@@ -40,7 +40,7 @@ function DayList({ items, className = '' }) {
 /* ---- Day 1: a big Maputo frame, then three smaller ones ---------------- */
 function DayOne({ day, media }) {
   return (
-    <article className="day day--one" aria-labelledby="day-day-1">
+    <article className="day day--one reveal" aria-labelledby="day-day-1">
       <div className="shell grid12 day__top">
         <Figure
           media={media.lead}
@@ -71,7 +71,7 @@ function DayOne({ day, media }) {
 /* ---- Day 2: the lagoon runs full width and carries the day ------------- */
 function DayTwo({ day, media }) {
   return (
-    <article className="day day--two" aria-labelledby="day-day-2">
+    <article className="day day--two reveal" aria-labelledby="day-day-2">
       <div className="day__bleed">
         <img
           src={media.lead.src}
@@ -104,7 +104,7 @@ function DayTwo({ day, media }) {
 /* ---- Day 3: the optional-activity gallery ------------------------------ */
 function DayThree({ day, media }) {
   return (
-    <article className="day day--three" aria-labelledby="day-day-3">
+    <article className="day day--three reveal" aria-labelledby="day-day-3">
       <div className="shell">
         <div className="day__body day__body--centreless">
           <DayHead day={day} />
@@ -148,7 +148,7 @@ function DayThree({ day, media }) {
 /* ---- Day 4: calm and open -------------------------------------------- */
 function DayFour({ day, media }) {
   return (
-    <article className="day day--four" aria-labelledby="day-day-4">
+    <article className="day day--four reveal" aria-labelledby="day-day-4">
       <div className="shell grid12 day__four-body">
         <div className="day__body">
           <DayHead day={day} />
@@ -184,7 +184,7 @@ export default function Itinerary() {
   return (
     <section className="itinerary" id="itinerary" aria-labelledby="itinerary-title">
       <div className="shell">
-        <div className="grid12 itinerary__head">
+        <div className="grid12 itinerary__head reveal">
           <h2 id="itinerary-title">
             Your trip,
             <br />
@@ -203,7 +203,7 @@ export default function Itinerary() {
         return <Layout key={day.day} day={day} media={dayMedia[i + 1]} />;
       })}
 
-      <div className="shell grid12 itinerary__foot">
+      <div className="shell grid12 itinerary__foot reveal">
         <div className="stayin">
           <Label as="h3" className="stayin__label">
             Where you stay

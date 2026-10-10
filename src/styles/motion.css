@@ -1,0 +1,168 @@
+/* ==========================================================================
+   Motion
+   Every animation on the site lives here, so the whole system can be read,
+   tuned or switched off in one place.
+
+   Three rules it follows:
+     1. Only `opacity` and `transform` are animated. Nothing that triggers
+        layout, so nothing can shift or jank.
+     2. Content is never hidden by CSS on its own. The hidden state is scoped
+        to `html.js-reveal`, which `src/reveal.js` only adds once it knows it
+        can reveal things again.
+     3. Every effect is off under `prefers-reduced-motion`.
+   ========================================================================== */
+
+/* --- Scroll reveal --------------------------------------------------------
+   Hidden only when the script is running and able to bring it back. */
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+}
+
+.js-reveal .reveal {
+  transition:
+    opacity var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms);
+  /* Promote only while the element is still waiting to move. */
+  will-change: opacity, transform;
+}
+
+.js-reveal .reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+/* A photograph carries a fraction more travel than a line of text. */
+.js-reveal figure.reveal,
+.js-reveal .reveal--media {
+  transform: translate3d(0, 22px, 0);
+}
+
+/* --- Hero entrance --------------------------------------------------------
+   The hero is in view at load, so the observer fires immediately and the
+   stagger reads as an entrance rather than a scroll reveal. Delays are set
+   per element with `--reveal-delay` in Hero.jsx. */
+
+/* --- Hover and focus ------------------------------------------------------
+   Short, 180 to 280ms, and only ever opacity, colour or a small transform. */
+
+.gallery__btn img,
+.activity img,
+.sources__list img {
+  transition: transform var(--dur-hover) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gallery__btn:hover img,
+  .gallery__btn:focus-visible img {
+    transform: scale(1.035);
+  }
+
+  .activity:hover img {
+    transform: scale(1.03);
+  }
+
+  /* A one pixel lift. Enough to feel, not enough to notice. */
+  .link:hover .link__arrow,
+  .link:focus-visible .link__arrow {
+    transform: translateX(0.22em);
+  }
+
+  .button:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+}
+
+.button {
+  transition:
+    background var(--dur-hover) var(--ease-out),
+    color var(--dur-hover) var(--ease-out),
+    transform var(--dur-hover) var(--ease-out);
+}
+
+.link,
+.nav__link,
+.footer__list a,
+.channel > a {
+  transition:
+    color var(--dur-hover) var(--ease-out),
+    border-color var(--dur-hover) var(--ease-out),
+    opacity var(--dur-hover) var(--ease-out);
+}
+
+.link__arrow,
+.channel__arrow {
+  transition: transform var(--dur-hover) var(--ease-out);
+}
+
+/* --- Gallery captions -----------------------------------------------------
+   Captions stay legible at rest. On a fine pointer they lift very slightly on
+   hover; they are never hidden behind an interaction, because touch users and
+   keyboard users would lose them. */
+@media (hover: hover) and (pointer: fine) {
+  .gallery__caption {
+    transition: transform var(--dur-hover) var(--ease-out);
+  }
+
+  .gallery__btn:hover .gallery__caption,
+  .gallery__btn:focus-visible .gallery__caption {
+    transform: translateY(-2px);
+  }
+}
+
+/* --- Lightbox ------------------------------------------------------------- */
+.lightbox__backdrop {
+  animation: lb-fade 240ms var(--ease-out) both;
+}
+
+.lightbox__inner {
+  animation: lb-rise 320ms var(--ease-out) both;
+}
+
+@keyframes lb-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes lb-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- Reduced motion -------------------------------------------------------
+   Nothing moves. Everything is visible and every control still works. */
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .reveal,
+  .js-reveal .reveal.is-revealed,
+  .js-reveal figure.reveal,
+  .js-reveal .reveal--media {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .gallery__btn img,
+  .gallery__btn:hover img,
+  .activity img,
+  .activity:hover img,
+  .sources__list img,
+  .button:hover:not(:disabled),
+  .link:hover .link__arrow,
+  .gallery__btn:hover .gallery__caption {
+    transform: none;
+    transition: none;
+  }
+
+  .lightbox__backdrop,
+  .lightbox__inner {
+    animation: none;
+  }
+}

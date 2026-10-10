@@ -30,7 +30,7 @@ export default function Planning() {
   return (
     <section className="section planning" id="planning" aria-labelledby="planning-title">
       <div className="shell">
-        <div className="grid12 planning__head">
+        <div className="grid12 planning__head reveal">
           <h2 id="planning-title">
             How the planning
             <br />
@@ -42,7 +42,7 @@ export default function Planning() {
           </p>
         </div>
 
-        <ol className="steps">
+        <ol className="steps reveal" style={{ '--reveal-delay': '110ms' }}>
           {steps.map((step) => (
             <li className="step" key={step.numeral}>
               <span className="step__numeral" aria-hidden="true">

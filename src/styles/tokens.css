@@ -62,10 +62,15 @@
   --gutter: clamp(1.25rem, 0.6rem + 3.2vw, 5.5rem);
   --max-w: 82.5rem;
 
-  /* --- Motion ------------------------------------------------------------- */
+  /* --- Motion -------------------------------------------------------------
+     Hover responses are short, reveals are slower, and the stagger between
+     elements is just long enough to read as a sequence. */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 0.84, 0.44, 1);
   --dur: 480ms;
-  --dur-fast: 200ms;
+  --dur-fast: 220ms;
+  --dur-hover: 220ms;
+  --dur-reveal: 620ms;
 }
 
 /* Honour the visitor's motion preference everywhere. */
@@ -73,5 +78,7 @@
   :root {
     --dur: 1ms;
     --dur-fast: 1ms;
+    --dur-hover: 1ms;
+    --dur-reveal: 1ms;
   }
 }

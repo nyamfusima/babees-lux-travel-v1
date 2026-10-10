@@ -18,7 +18,7 @@ export default function Contact() {
   return (
     <section className="section contact" id="contact" aria-labelledby="contact-title">
       <div className="shell grid12">
-        <div className="contact__copy">
+        <div className="contact__copy reveal">
           <Label light as="div">
             Booking &amp; enquiries
           </Label>
@@ -33,7 +33,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="contact__channels">
+        <div className="contact__channels reveal" style={{ '--reveal-delay': '110ms' }}>
           <ul className="channels">
             <li className="channel channel--primary">
               <a href={generalWhatsappLink()} target="_blank" rel="noopener noreferrer">

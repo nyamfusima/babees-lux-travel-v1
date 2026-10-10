@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import TripIntro from './components/TripIntro.jsx';
@@ -11,6 +11,7 @@ import Enquiry from './components/Enquiry.jsx';
 import Contact from './components/Contact.jsx';
 import BookingCta from './components/BookingCta.jsx';
 import Footer from './components/Footer.jsx';
+import { initReveal } from './reveal.js';
 
 /* Maps an enquiry-only route onto the matching option in the form's
    "Which trip" select, so a trip-specific enquiry arrives pre-set. */
@@ -47,6 +48,9 @@ export default function App() {
       block: 'start'
     });
   }, []);
+
+  /* One observer for the whole page. Returns a teardown. */
+  useEffect(() => initReveal(), []);
 
   /* Anchor links keep their native behaviour and the URL hash; this only
      closes the mobile menu. */

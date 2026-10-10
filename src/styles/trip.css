@@ -275,22 +275,6 @@
   aspect-ratio: 4 / 5;
 }
 
-.activity img {
-  transition: transform var(--dur) var(--ease);
-}
-
-.activity:hover img {
-  transform: scale(1.03);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .activity img,
-  .activity:hover img {
-    transition: none;
-    transform: none;
-  }
-}
-
 .activity__name {
   margin: var(--s-2) 0 0;
   font-family: var(--font-text);
@@ -453,20 +437,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--dur) var(--ease);
-}
-
-.gallery__btn:hover img,
-.gallery__btn:focus-visible img {
-  transform: scale(1.035);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .gallery__btn img,
-  .gallery__btn:hover img {
-    transition: none;
-    transform: none;
-  }
 }
 
 /* Sentence case: tracked caps over a photograph are hard work to read. */

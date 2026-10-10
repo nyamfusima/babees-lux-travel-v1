@@ -39,7 +39,7 @@ export default function BookingCta() {
       </div>
       <div className="booking__scrim" aria-hidden="true" />
 
-      <div className="shell booking__inner">
+      <div className="shell booking__inner reveal">
         <h2 id="booking-title">
           Let’s plan your
           <br />

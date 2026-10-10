@@ -33,12 +33,12 @@ export default function TripIntro({ onEnquire }) {
         <div className="grid12 trip-intro__body">
           <Figure
             media={bileneShore}
-            className="trip-intro__figure"
+            className="trip-intro__figure reveal reveal--media"
             sizes="(max-width: 48rem) 92vw, 52vw"
             caption={bileneShore.caption}
           />
 
-          <div className="trip-intro__text">
+          <div className="trip-intro__text reveal" style={{ '--reveal-delay': '110ms' }}>
             <Label as="div">The journey</Label>
             <h2 id="trip-intro-title">
               Your Mozambique
@@ -69,7 +69,7 @@ export default function TripIntro({ onEnquire }) {
         </div>
 
         {/* Verified facts only. Each one is printed on a poster. */}
-        <dl className="factstrip">
+        <dl className="factstrip reveal">
           {facts.map((f) => (
             <div className="factstrip__item" key={f.label}>
               <dt>{f.label}</dt>

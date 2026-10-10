@@ -8,3 +8,5 @@
 @import './styles/trip.css';
 @import './styles/form.css';
 @import './styles/responsive.css';
+/* Last, so it can refine transitions the earlier sheets declare. */
+@import './styles/motion.css';
