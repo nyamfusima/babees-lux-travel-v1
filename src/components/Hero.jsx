@@ -1,25 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Label, ActionLink } from './primitives.jsx';
 import { heroMedia } from '../media.js';
+import { mozambiqueTour, getDepartures } from '../packages.js';
+import { packageWhatsappLink, departureLabel } from '../enquiry.js';
 
 /**
  * Cinematic hero.
  *
- * The video is an enhancement, never a requirement. The poster image is the
- * real content: it is in the markup from the first paint, and the video is
- * only mounted when it is actually appropriate — a large viewport, no
- * reduced-motion preference, and no data-saver request. If it fails to load
- * or decode, we drop back to the still without the visitor noticing.
+ * The video is an enhancement, never a requirement. The poster still is in the
+ * markup from the first paint and is preloaded; the video is only mounted when
+ * it is actually appropriate — a large viewport, no reduced-motion preference,
+ * and no data-saver request. If it fails to load or decode we fall back to the
+ * still without the visitor noticing.
  */
-export default function Hero({ onEnquire }) {
+export default function Hero() {
   const [useVideo, setUseVideo] = useState(false);
-  const [playing, setPlaying] = useState(true);
-  const videoRef = useRef(null);
+  const next = getDepartures().upcoming[0];
 
   useEffect(() => {
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const sizeQuery = window.matchMedia('(min-width: 40.0625rem)');
-
     const saveData = navigator.connection?.saveData === true;
 
     const decide = () => {
@@ -29,40 +29,23 @@ export default function Hero({ onEnquire }) {
     decide();
     motionQuery.addEventListener('change', decide);
     sizeQuery.addEventListener('change', decide);
-
     return () => {
       motionQuery.removeEventListener('change', decide);
       sizeQuery.removeEventListener('change', decide);
     };
   }, []);
 
-  const toggleMotion = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (video.paused) {
-      video.play().then(
-        () => setPlaying(true),
-        () => setPlaying(false)
-      );
-    } else {
-      video.pause();
-      setPlaying(false);
-    }
-  };
-
   return (
     <section className="hero" id="top" aria-label="Introduction">
       <div className="hero__media">
         {useVideo ? (
           <video
-            ref={videoRef}
             poster={heroMedia.poster}
             autoPlay
             muted
             loop
             playsInline
             preload="metadata"
-            /* Decorative: the still below carries the description. */
             aria-hidden="true"
             tabIndex={-1}
             onError={() => setUseVideo(false)}
@@ -85,40 +68,43 @@ export default function Hero({ onEnquire }) {
 
       <div className="hero__scrim" aria-hidden="true" />
 
-      {useVideo ? (
-        <button type="button" className="hero__motion" onClick={toggleMotion}>
-          {playing ? 'Pause motion' : 'Play motion'}
-        </button>
-      ) : null}
-
       <div className="hero__inner">
         <div className="hero__copy">
-          <Label light>Travel planning from South Africa</Label>
+          <Label light>Mozambique · 4 days</Label>
 
           <h1>
-            The coast is
+            Four days.
             <br />
-            <span className="em">closer</span> than you think.
+            A <span className="em">different</span> world.
           </h1>
 
           <p className="hero__lede">
-            Coastal journeys shaped around your dates, your people and the pace
-            you actually want to travel at.
+            From the energy of Maputo to the turquoise waters of Bilene, a
+            coastal escape built around the things you will actually remember.
           </p>
 
           <div className="hero__actions">
-            <ActionLink light href="#enquire" onClick={onEnquire}>
-              Start an enquiry
+            <ActionLink light href="#itinerary">
+              Explore the itinerary
             </ActionLink>
-            <ActionLink light href="#journeys">
-              See the journeys
+            <ActionLink
+              light
+              href={packageWhatsappLink(mozambiqueTour, next)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Enquire on WhatsApp
             </ActionLink>
           </div>
         </div>
 
         <div className="hero__foot">
-          <span>Enquiry-led planning</span>
-          <span>South Africa — Mozambique</span>
+          <span>
+            {next
+              ? `Next departure — ${departureLabel(next)}`
+              : 'Maputo & Bilene — 4 days'}
+          </span>
+          <span>Johannesburg — Mozambique</span>
         </div>
       </div>
     </section>

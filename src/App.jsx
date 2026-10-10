@@ -1,18 +1,22 @@
 import React, { useCallback, useState } from 'react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
-import Approach from './components/Approach.jsx';
-import Journeys from './components/Journeys.jsx';
-import Stays from './components/Stays.jsx';
+import TripIntro from './components/TripIntro.jsx';
+import Itinerary from './components/Itinerary.jsx';
+import Tours from './components/Tours.jsx';
+import Gallery from './components/Gallery.jsx';
 import Planning from './components/Planning.jsx';
+import OtherTrips from './components/OtherTrips.jsx';
 import Enquiry from './components/Enquiry.jsx';
-import Closing from './components/Closing.jsx';
+import Contact from './components/Contact.jsx';
+import BookingCta from './components/BookingCta.jsx';
 import Footer from './components/Footer.jsx';
 
-/* Journeys whose titles map onto a destination the form already offers, so a
-   trip-specific enquiry arrives with the right option pre-selected. */
-const DESTINATION_FOR_JOURNEY = {
-  'Mozambique, slowly': 'Mozambique'
+/* Maps an enquiry-only route onto the matching option in the form's
+   "Which trip" select, so a trip-specific enquiry arrives pre-set. */
+const TRIP_FOR_TITLE = {
+  'Group bookings': 'Group booking',
+  'Custom itineraries': 'Custom itinerary'
 };
 
 export default function App() {
@@ -20,19 +24,15 @@ export default function App() {
   const [interest, setInterest] = useState(null);
 
   /**
-   * Moves the visitor to the enquiry form, optionally carrying the journey
-   * they came from. `key` forces the prefill effect to run again when the
-   * same journey is chosen twice.
+   * Moves the visitor to the enquiry form, carrying the trip they came from.
+   * `key` forces the prefill effect to run again if the same trip is picked
+   * twice in a row.
    */
   const goToEnquiry = useCallback((title) => {
     setMenuOpen(false);
 
     if (typeof title === 'string') {
-      setInterest({
-        title,
-        destination: DESTINATION_FOR_JOURNEY[title],
-        key: Date.now()
-      });
+      setInterest({ title, destination: TRIP_FOR_TITLE[title], key: Date.now() });
     }
 
     const target = document.getElementById('enquire');
@@ -48,11 +48,9 @@ export default function App() {
     });
   }, []);
 
-  /* Anchor links keep their native behaviour and the URL hash; this only adds
-     the prefill and the menu close. */
-  const handleEnquiryLink = useCallback(() => {
-    setMenuOpen(false);
-  }, []);
+  /* Anchor links keep their native behaviour and the URL hash; this only
+     closes the mobile menu. */
+  const handleEnquiryLink = useCallback(() => setMenuOpen(false), []);
 
   return (
     <>
@@ -67,13 +65,16 @@ export default function App() {
       />
 
       <main id="main">
-        <Hero onEnquire={handleEnquiryLink} />
-        <Approach onEnquire={handleEnquiryLink} />
-        <Journeys onEnquire={goToEnquiry} />
-        <Stays />
+        <Hero />
+        <TripIntro onEnquire={handleEnquiryLink} />
+        <Itinerary />
+        <Tours onEnquire={handleEnquiryLink} />
+        <Gallery />
         <Planning />
+        <OtherTrips onEnquire={goToEnquiry} />
         <Enquiry interest={interest} />
-        <Closing onEnquire={handleEnquiryLink} />
+        <Contact />
+        <BookingCta />
       </main>
 
       <Footer onEnquire={handleEnquiryLink} />

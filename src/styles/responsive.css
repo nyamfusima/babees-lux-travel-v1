@@ -1,15 +1,14 @@
 /* ==========================================================================
    Responsive — the 12-column editorial grid folds down in two stages.
-   Checked at 360, 390, 768, 1024 and wide desktop.
+   Checked at 360, 390, 414, 768, 1024, 1280, 1440 and 1920.
    ========================================================================== */
 
 /* --- Tablet / small laptop (≤ 1024px) ------------------------------------ */
 @media (max-width: 64rem) {
-  .approach__label {
-    grid-column: 1 / -1;
-  }
-
-  .approach__title {
+  .approach__label,
+  .approach__title,
+  .tours__label,
+  .tours__title {
     grid-column: 1 / -1;
   }
 
@@ -22,12 +21,21 @@
     padding-top: 0;
   }
 
-  .journeys__head h2 {
-    grid-column: 1 / span 8;
+  .tours__figure {
+    grid-column: 1 / span 5;
   }
 
-  .journeys__intro {
-    grid-column: 1 / span 7;
+  .tours__detail {
+    grid-column: 7 / span 6;
+  }
+
+  .itinerary__head h2,
+  .itinerary__intro,
+  .planning__head h2,
+  .planning__intro,
+  .other__head h2,
+  .other__intro {
+    grid-column: 1 / -1;
   }
 
   .journey--wide .journey__figure {
@@ -46,31 +54,6 @@
     grid-column: 7 / span 6;
   }
 
-  .journey--full .journey__head {
-    grid-column: 1 / span 6;
-  }
-
-  .journey--full .journey__tail {
-    grid-column: 7 / span 6;
-  }
-
-  .stays__copy {
-    grid-column: 1 / -1;
-  }
-
-  .stays__a {
-    grid-column: 1 / span 6;
-  }
-
-  .stays__b {
-    grid-column: 8 / span 5;
-  }
-
-  .planning__head h2,
-  .planning__intro {
-    grid-column: 1 / -1;
-  }
-
   .step {
     grid-template-columns: 3rem minmax(0, 1fr);
   }
@@ -81,11 +64,14 @@
   }
 
   .enquiry__copy,
-  .enquiry__form {
+  .enquiry__form,
+  .contact__copy,
+  .contact__channels {
     grid-column: 1 / -1;
   }
 
-  .enquiry__form {
+  .enquiry__form,
+  .contact__channels {
     margin-top: var(--s-5);
   }
 
@@ -93,7 +79,8 @@
     grid-column: 1 / span 6;
   }
 
-  .footer__col {
+  .footer__col,
+  .footer__col:last-of-type {
     grid-column: span 3;
   }
 }
@@ -101,15 +88,71 @@
 /* --- Portrait tablet and below (≤ 768px) --------------------------------- */
 @media (max-width: 48rem) {
   .approach__figure,
-  .approach__text {
+  .approach__text,
+  .tours__figure,
+  .tours__detail {
     grid-column: 1 / -1;
   }
 
-  .approach__figure .frame {
+  .approach__figure .frame,
+  .tours__figure .frame {
     aspect-ratio: 3 / 2;
   }
 
-  .approach__text {
+  .approach__text,
+  .tours__detail {
+    margin-top: var(--s-4);
+  }
+
+  /* Departures become a two-line block: date and price, then the action. */
+  .departure {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: var(--s-2);
+  }
+
+  .departure__date {
+    grid-column: 1;
+  }
+
+  .departure__price {
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .departure__meta {
+    display: none;
+  }
+
+  .departure__cta {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .inclusions__col {
+    grid-column: 1 / -1;
+  }
+
+  .day {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--s-2);
+  }
+
+  .day__marker {
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--s-3);
+  }
+
+  .day__items {
+    columns: 1;
+  }
+
+  .stayin__figure,
+  .stayin {
+    grid-column: 1 / -1;
+  }
+
+  .stayin {
     margin-top: var(--s-4);
   }
 
@@ -120,37 +163,17 @@
   .journey--wide .journey__figure,
   .journey--wide .journey__content,
   .journey--offset .journey__figure,
-  .journey--offset .journey__content,
-  .journey--full .journey__head,
-  .journey--full .journey__tail {
+  .journey--offset .journey__content {
     grid-column: 1 / -1;
   }
 
-  /* Photograph first on every journey once stacked, so the rhythm is even. */
+  /* Photograph first on every row once stacked, so the rhythm stays even. */
   .journey--offset .journey__figure {
     order: -1;
   }
 
   .journey--wide .journey__figure .frame {
     aspect-ratio: 3 / 2;
-  }
-
-  .journey--full .journey__figure .frame {
-    aspect-ratio: 16 / 9;
-  }
-
-  .stays__a,
-  .stays__b {
-    grid-column: 1 / -1;
-  }
-
-  .stays__b {
-    margin-top: 0;
-  }
-
-  .stays__a .frame,
-  .stays__b .frame {
-    aspect-ratio: 4 / 5;
   }
 
   .closing__figure .frame {
@@ -172,20 +195,22 @@
   }
 
   .footer__brand,
-  .footer__col {
+  .footer__col,
+  .footer__col:last-of-type {
     grid-column: 1 / -1;
   }
 }
 
 /* --- Phones (≤ 480px) ----------------------------------------------------- */
 @media (max-width: 30rem) {
-  .journeys__head h2,
-  .journeys__intro {
-    grid-column: 1 / -1;
+  .facts__row {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.35rem;
   }
 
-  .journey__numeral {
-    font-size: 2.25rem;
+  .departures__head {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .step {
@@ -195,6 +220,17 @@
 
   .step__numeral {
     font-size: 1.5rem;
+  }
+
+  .channel > a,
+  .channel > div {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 0.3rem;
+    padding-block: var(--s-3);
+  }
+
+  .channel__label {
+    grid-column: 1 / -1;
   }
 
   .hero__inner {
@@ -227,5 +263,197 @@
 @media (min-width: 100rem) {
   :root {
     --max-w: 90rem;
+  }
+}
+
+/* ==========================================================================
+   The Mozambique trip sections — introduction, itinerary, gallery, booking
+   ========================================================================== */
+
+/* --- Tablet / small laptop (≤ 1024px) ------------------------------------ */
+@media (max-width: 64rem) {
+  .trip-intro__figure {
+    grid-column: 1 / span 6;
+  }
+
+  .trip-intro__text {
+    grid-column: 8 / span 5;
+  }
+
+  .itinerary__head h2,
+  .itinerary__intro,
+  .gallery__head h2,
+  .gallery__intro {
+    grid-column: 1 / -1;
+  }
+
+  .day--one .day__lead {
+    grid-column: 1 / span 7;
+  }
+
+  .day--one .day__body,
+  .day--two .day__body,
+  .day--four .day__body {
+    grid-column: 1 / -1;
+  }
+
+  .day__aside,
+  .day__four-a {
+    grid-column: 1 / -1;
+  }
+
+  .day__four-b {
+    grid-column: 1 / span 6;
+    margin-top: var(--s-3);
+  }
+
+  .day__four-c {
+    grid-column: 7 / span 6;
+    margin-top: var(--s-3);
+  }
+
+  .stayin,
+  .stayin__note {
+    grid-column: 1 / -1;
+  }
+
+  .activities {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- Portrait tablet and below (≤ 768px) --------------------------------- */
+@media (max-width: 48rem) {
+  .trip-intro__figure,
+  .trip-intro__text {
+    grid-column: 1 / -1;
+  }
+
+  .trip-intro__text {
+    margin-top: var(--s-4);
+  }
+
+  .factstrip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* With two per row the vertical rule between columns has to reset. */
+  .factstrip__item {
+    padding: var(--s-3) var(--s-3) var(--s-3) 0;
+    border-right: 1px solid var(--line-dark-soft);
+    border-bottom: 1px solid var(--line-dark-soft);
+  }
+
+  .factstrip__item:nth-child(2n) {
+    border-right: 0;
+    padding-left: var(--s-3);
+  }
+
+  .factstrip__item:nth-child(n + 3) {
+    border-bottom: 0;
+  }
+
+  .factstrip__item:not(:first-child) {
+    padding-left: 0;
+  }
+
+  .factstrip__item:nth-child(2n) {
+    padding-left: var(--s-3);
+  }
+
+  .day--one .day__lead {
+    grid-column: 1 / -1;
+  }
+
+  .day__strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* The portrait frame would be lonely on its own row; let it run full width. */
+  .day__strip > figure:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .day__strip > figure:last-child .frame {
+    aspect-ratio: 16 / 9;
+  }
+
+  .day__bleed img {
+    height: clamp(12rem, 52vw, 20rem);
+  }
+
+  .day__four-b,
+  .day__four-c {
+    grid-column: span 6;
+  }
+
+  .stayin__list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-3);
+  }
+
+  .activities {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery__cell--tall,
+  .gallery__cell--normal {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  .gallery__cell--wide {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .lightbox__close {
+    position: static;
+    transform: none;
+    justify-self: start;
+  }
+
+  .lightbox__inner {
+    gap: var(--s-2);
+  }
+}
+
+/* --- Phones (≤ 480px) ----------------------------------------------------- */
+@media (max-width: 30rem) {
+  .factstrip {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .factstrip__item,
+  .factstrip__item:nth-child(2n),
+  .factstrip__item:not(:first-child) {
+    padding: var(--s-3) 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line-dark-soft);
+    padding-left: 0;
+  }
+
+  .factstrip__item:last-child {
+    border-bottom: 0;
+  }
+
+  .day__strip {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .day__strip > figure:last-child .frame {
+    aspect-ratio: 3 / 2;
+  }
+
+  .booking__actions {
+    gap: var(--s-3);
   }
 }

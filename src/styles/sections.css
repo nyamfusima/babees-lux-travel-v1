@@ -1,5 +1,6 @@
 /* ==========================================================================
-   Sections — approach, journeys, stays, planning, enquiry, closing, footer
+   Sections — tours, other trips, planning, enquiry, contact, footer.
+   contact, closing, footer.
    Each section is composed differently on purpose. There is no repeated
    three-column card grid anywhere on the page.
    ========================================================================== */
@@ -11,115 +12,264 @@
 }
 
 /* ==========================================================================
-   Approach — asymmetric editorial introduction
+   Tours — the published package
    ========================================================================== */
 
-.approach {
-  background: var(--c-ivory);
+.tours {
+  background: var(--c-sand);
 }
 
-.approach__head {
+.tours__head {
   align-items: start;
 }
 
-.approach__label {
+.tours__label {
   grid-column: 1 / span 3;
   padding-top: 0.6rem;
 }
 
-.approach__title {
+.tours__title {
   grid-column: 4 / span 9;
-  max-width: 20ch;
+  max-width: 18ch;
 }
 
-.approach__body {
-  margin-top: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+.tours__body {
+  margin-top: clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
   align-items: start;
 }
 
-.approach__figure {
+/* No photograph in this section on purpose: the itinerary above is
+   image-heavy, so the commercial facts are set purely in type. */
+.tours__detail {
   grid-column: 1 / span 5;
 }
 
-.approach__figure .frame {
-  aspect-ratio: 4 / 5;
-}
-
-.approach__text {
-  grid-column: 7 / span 6;
-  /* Drops the text column below the top of the photograph. */
-  padding-top: clamp(0rem, -3rem + 8vw, 4rem);
-}
-
-.approach__lede {
+.tours__lede {
   font-size: var(--t-lede);
   line-height: 1.6;
-  color: var(--c-ink);
-  max-width: 36ch;
+  max-width: 38ch;
 }
 
-.approach__p {
-  margin-top: var(--s-3);
-  color: var(--c-ink-soft);
-  max-width: 42ch;
-}
-
-/* Three short statements separated by hairlines — not icon cards. */
-.tenets {
+/* --- Price and hard facts ------------------------------------------------- */
+.facts {
   margin: var(--s-5) 0 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--line-dark-soft);
+  border-top: 1px solid var(--line-dark);
 }
 
-.tenets li {
+.facts__row {
   display: grid;
-  grid-template-columns: 2.5rem 1fr;
+  grid-template-columns: minmax(8rem, 1fr) 2fr;
   gap: var(--s-3);
+  align-items: baseline;
   padding: var(--s-3) 0;
   border-bottom: 1px solid var(--line-dark-soft);
 }
 
-.tenets dt,
-.tenets h3 {
-  font-family: var(--font-text);
-  font-size: var(--t-body);
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: 1.5;
-  margin: 0;
+.facts dt {
+  font-size: var(--t-micro);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
 }
 
-.tenets p {
-  margin-top: 0.25rem;
+.facts dd {
+  margin: 0;
+  font-size: var(--t-body);
+}
+
+.facts__price {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  display: inline-block;
+}
+
+.facts__basis {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: var(--t-micro);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+}
+
+.tours__note {
+  margin-top: var(--s-3);
   font-size: var(--t-small);
   color: var(--c-ink-soft);
-  max-width: 40ch;
+  max-width: 44ch;
 }
 
-.approach__actions {
+.tours__body {
+  align-items: start;
+}
+
+/* --- Departure dates ------------------------------------------------------ */
+.departures {
+  margin-top: clamp(3rem, 2rem + 4vw, 5.5rem);
+}
+
+.departures__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3) var(--s-4);
+  padding-bottom: var(--s-3);
+}
+
+.departures__head h3 {
+  font-size: var(--t-h3);
+}
+
+.departures__head p {
+  font-size: var(--t-small);
+  color: var(--c-ink-soft);
+}
+
+.departures__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line-dark);
+}
+
+.departure {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: var(--s-3) var(--s-4);
+  align-items: center;
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--line-dark-soft);
+  transition: background var(--dur-fast) var(--ease);
+}
+
+.departure:hover {
+  background: rgba(36, 42, 37, 0.025);
+}
+
+.departure__date {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1rem + 0.5vw, 1.5rem);
+  line-height: 1.1;
+}
+
+.departure__meta,
+.departure__price {
+  font-size: var(--t-small);
+  color: var(--c-ink-soft);
+}
+
+.departure__price {
+  font-variant-numeric: lining-nums;
+}
+
+.departure__cta {
+  justify-self: end;
+  white-space: nowrap;
+}
+
+.departures__past {
+  margin-top: var(--s-3);
+  font-size: var(--t-small);
+  color: var(--c-ink-soft);
+}
+
+.departures__past a {
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.departures__past a:hover {
+  border-bottom-color: var(--c-champagne);
+}
+
+/* --- Inclusions and exclusions -------------------------------------------- */
+.inclusions {
+  margin-top: clamp(3rem, 2rem + 4vw, 5rem);
+  align-items: start;
+}
+
+.inclusions__col {
+  grid-column: span 6;
+}
+
+.inclusions__col h3 {
+  font-family: var(--font-text);
+  font-size: var(--t-micro);
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+  padding-bottom: var(--s-2);
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.inclusions__sub {
   margin-top: var(--s-5);
 }
 
+.ticks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ticks li {
+  position: relative;
+  padding: var(--s-2) 0 var(--s-2) 1.6rem;
+  border-bottom: 1px solid var(--line-dark-soft);
+  font-size: var(--t-small);
+  line-height: 1.6;
+}
+
+.ticks li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.35em;
+  width: 0.7rem;
+  height: 1px;
+  background: var(--c-champagne);
+}
+
+.ticks--out li::before {
+  background: var(--c-ink-faint);
+}
+
+.inclusions__optional {
+  margin-top: var(--s-3);
+  font-size: var(--t-small);
+  line-height: 1.8;
+  color: var(--c-ink-soft);
+}
+
+.tours__actions {
+  margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4) var(--s-5);
+}
+
 /* ==========================================================================
-   Journeys — three deliberately different compositions
+   Other trips — enquiry-only routes, no prices or dates
    ========================================================================== */
 
-.journeys {
+.other {
   background: var(--c-sand);
 }
 
-.journeys__head {
+.other__head {
   align-items: end;
   padding-bottom: var(--s-5);
 }
 
-.journeys__head h2 {
+.other__head h2 {
   grid-column: 1 / span 7;
   max-width: 16ch;
 }
 
-.journeys__intro {
+.other__intro {
   grid-column: 9 / span 4;
   color: var(--c-ink-soft);
   font-size: var(--t-small);
@@ -130,22 +280,6 @@
   padding-block: clamp(2.5rem, 1.5rem + 4vw, 5rem);
   border-top: 1px solid var(--line-dark);
   align-items: center;
-}
-
-.journey__meta {
-  display: flex;
-  align-items: baseline;
-  gap: var(--s-3);
-  margin-bottom: var(--s-3);
-}
-
-.journey__numeral {
-  font-family: var(--font-display);
-  font-size: var(--t-numeral);
-  line-height: 0.8;
-  color: var(--c-ink);
-  opacity: 0.22;
-  font-variant-numeric: lining-nums;
 }
 
 .journey h3 {
@@ -171,7 +305,6 @@
   margin-top: var(--s-4);
 }
 
-/* -- 01 "wide": tall photograph left, text right ------------------------- */
 .journey--wide .journey__figure {
   grid-column: 1 / span 5;
 }
@@ -184,7 +317,6 @@
   grid-column: 7 / span 5;
 }
 
-/* -- 02 "offset": text left, wide photograph right, reversed reading order */
 .journey--offset .journey__content {
   grid-column: 1 / span 4;
 }
@@ -195,90 +327,6 @@
 
 .journey--offset .journey__figure .frame {
   aspect-ratio: 3 / 2;
-}
-
-/* -- 03 "full": photograph across the grid, content beneath it ----------- */
-.journey--full .journey__figure {
-  grid-column: 1 / -1;
-}
-
-.journey--full .journey__figure .frame {
-  aspect-ratio: 21 / 9;
-}
-
-.journey--full .journey__content {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: var(--s-4) clamp(1rem, 0.4rem + 2vw, 2.5rem);
-  align-items: start;
-  margin-top: var(--s-4);
-}
-
-.journey--full .journey__head {
-  grid-column: 1 / span 5;
-}
-
-.journey--full .journey__tail {
-  grid-column: 7 / span 5;
-}
-
-.journey--full .journey h3,
-.journey--full h3 {
-  max-width: 18ch;
-}
-
-/* Honest standing note about what the journeys are and are not. */
-.journeys__disclaimer {
-  margin-top: var(--s-5);
-  padding-top: var(--s-3);
-  border-top: 1px solid var(--line-dark);
-  font-size: var(--t-small);
-  color: var(--c-ink-soft);
-  max-width: 62ch;
-}
-
-/* ==========================================================================
-   Stays — two-photograph editorial spread on different baselines
-   ========================================================================== */
-
-.stays {
-  background: var(--c-ivory);
-}
-
-.stays__copy {
-  grid-column: 1 / span 4;
-  align-self: center;
-}
-
-.stays__copy h2 {
-  margin-top: var(--s-3);
-  max-width: 12ch;
-}
-
-.stays__copy p {
-  margin-top: var(--s-3);
-  color: var(--c-ink-soft);
-  font-size: var(--t-small);
-  max-width: 34ch;
-}
-
-.stays__a {
-  grid-column: 6 / span 4;
-}
-
-.stays__a .frame {
-  aspect-ratio: 3 / 4;
-}
-
-.stays__b {
-  grid-column: 10 / span 3;
-  /* Dropped down so the pair never reads as a tidy two-up. */
-  margin-top: clamp(2rem, 1rem + 5vw, 6rem);
-}
-
-.stays__b .frame {
-  aspect-ratio: 4 / 5;
 }
 
 /* ==========================================================================
@@ -315,7 +363,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  counter-reset: step;
   border-top: 1px solid var(--line-light-soft);
 }
 
@@ -381,7 +428,7 @@
   padding-top: var(--s-3);
   border-top: 1px solid var(--line-light-soft);
   font-size: var(--t-small);
-  color: rgba(247, 245, 239, 0.62);
+  color: rgba(247, 245, 239, 0.66);
   max-width: 34ch;
 }
 
@@ -390,44 +437,98 @@
 }
 
 /* ==========================================================================
-   Closing invitation
+   Contact
    ========================================================================== */
 
-.closing {
-  position: relative;
-  background: var(--c-sand);
+.contact {
+  background: var(--c-forest);
+  color: var(--c-ivory);
 }
 
-.closing__figure .frame {
-  aspect-ratio: 21 / 9;
-  min-height: 18rem;
+.contact h2 {
+  color: var(--c-ivory);
 }
 
-.closing__panel {
-  position: relative;
-  z-index: 2;
-  background: var(--c-ivory);
-  padding: clamp(1.75rem, 1rem + 3vw, 3rem);
-  max-width: 34rem;
-  /* Overlaps the photograph's lower-left corner. */
-  margin-top: clamp(-5rem, -3rem - 4vw, -2rem);
-  margin-left: 0;
+.contact__copy {
+  grid-column: 1 / span 5;
 }
 
-.closing__panel h2 {
+.contact__copy h2 {
   margin-top: var(--s-3);
-  max-width: 14ch;
+  max-width: 12ch;
 }
 
-.closing__panel p {
-  margin-top: var(--s-3);
-  color: var(--c-ink-soft);
-  font-size: var(--t-small);
-  max-width: 40ch;
-}
-
-.closing__panel .link {
+.contact__p {
   margin-top: var(--s-4);
+  color: rgba(247, 245, 239, 0.76);
+  max-width: 32ch;
+}
+
+.contact__channels {
+  grid-column: 7 / span 6;
+}
+
+.channels {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line-light);
+}
+
+.channel > a,
+.channel > div {
+  display: grid;
+  grid-template-columns: minmax(6rem, 1fr) minmax(0, 3fr) auto;
+  gap: var(--s-3);
+  align-items: baseline;
+  padding: var(--s-4) 0;
+  border-bottom: 1px solid var(--line-light-soft);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.channel__label {
+  font-size: var(--t-micro);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: rgba(247, 245, 239, 0.66);
+}
+
+.channel__value {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.05rem + 0.7vw, 1.75rem);
+  line-height: 1.15;
+  word-break: break-word;
+}
+
+.channel__value--email,
+.channel__value--handle {
+  font-family: var(--font-text);
+  font-size: var(--t-body);
+  letter-spacing: 0;
+}
+
+.channel__value--pending {
+  font-family: var(--font-text);
+  font-size: var(--t-small);
+  color: rgba(247, 245, 239, 0.66);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.channel__arrow {
+  color: rgba(247, 245, 239, 0.7);
+  transition: transform var(--dur-fast) var(--ease),
+              color var(--dur-fast) var(--ease);
+}
+
+.channel > a:hover .channel__arrow,
+.channel > a:focus-visible .channel__arrow {
+  color: var(--c-champagne);
+  transform: translateX(0.25em);
+}
+
+.channel--primary .channel__value {
+  color: var(--c-champagne);
 }
 
 /* ==========================================================================
@@ -460,8 +561,6 @@
   max-width: 26ch;
 }
 
-/* 4 + 3 + 3 + 2 fills the twelve tracks exactly; anything wider wraps the
-   last column onto its own row. */
 .footer__col {
   grid-column: span 3;
 }
@@ -506,13 +605,22 @@
   color: rgba(247, 245, 239, 0.66);
 }
 
-/* A channel the client has not supplied yet: shown, but plainly unlinked. */
 .footer__pending {
   display: block;
   margin-top: 0.2rem;
   font-size: var(--t-micro);
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: rgba(247, 245, 239, 0.64);
+}
+
+.footer__note {
+  margin-top: var(--s-5);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line-light-soft);
+  max-width: 68ch;
+  font-size: var(--t-small);
+  line-height: 1.7;
   color: rgba(247, 245, 239, 0.64);
 }
 
@@ -528,16 +636,4 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(247, 245, 239, 0.64);
-}
-
-/* Standing provenance note. Plain paragraph — deliberately not part of the
-   bottom bar, so it keeps a readable measure and a single rule above it. */
-.footer__note {
-  margin-top: var(--s-5);
-  padding-top: var(--s-3);
-  border-top: 1px solid var(--line-light-soft);
-  max-width: 62ch;
-  font-size: var(--t-small);
-  line-height: 1.7;
-  color: rgba(247, 245, 239, 0.58);
 }

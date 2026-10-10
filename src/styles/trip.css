@@ -1,0 +1,659 @@
+/* ==========================================================================
+   The Mozambique trip — introduction, day-by-day itinerary, activity
+   gallery, image gallery with lightbox, and the closing booking call.
+
+   Every day of the itinerary is composed differently on purpose; there is no
+   repeated card grid anywhere in this file.
+   ========================================================================== */
+
+/* ==========================================================================
+   Trip introduction
+   ========================================================================== */
+
+.trip-intro {
+  background: var(--c-ivory);
+}
+
+.trip-intro__body {
+  align-items: center;
+}
+
+.trip-intro__figure {
+  grid-column: 1 / span 6;
+}
+
+.trip-intro__figure .frame {
+  aspect-ratio: 3 / 2;
+}
+
+.trip-intro__text {
+  grid-column: 8 / span 5;
+}
+
+.trip-intro__text h2 {
+  margin-top: var(--s-3);
+  max-width: 12ch;
+}
+
+.trip-intro__lede {
+  margin-top: var(--s-4);
+  font-size: var(--t-lede);
+  line-height: 1.6;
+  max-width: 34ch;
+}
+
+.trip-intro__p {
+  margin-top: var(--s-3);
+  color: var(--c-ink-soft);
+  max-width: 40ch;
+}
+
+.trip-intro__actions {
+  margin-top: var(--s-5);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3) var(--s-5);
+}
+
+/* --- Verified facts strip ------------------------------------------------- */
+.factstrip {
+  margin: clamp(3rem, 2rem + 4vw, 5rem) 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.factstrip__item {
+  padding: var(--s-4) var(--s-4) var(--s-4) 0;
+  border-right: 1px solid var(--line-dark-soft);
+}
+
+.factstrip__item:last-child {
+  border-right: 0;
+}
+
+.factstrip__item:not(:first-child) {
+  padding-left: var(--s-4);
+}
+
+.factstrip dt {
+  font-size: var(--t-micro);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+}
+
+.factstrip dd {
+  margin: var(--s-2) 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 0.95rem + 0.45vw, 1.35rem);
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   Itinerary
+   ========================================================================== */
+
+.itinerary {
+  background: var(--c-sand);
+  padding-block: var(--section-y);
+}
+
+.itinerary__head {
+  align-items: end;
+  padding-bottom: var(--s-6);
+}
+
+.itinerary__head h2 {
+  grid-column: 1 / span 6;
+  max-width: 14ch;
+}
+
+.itinerary__intro {
+  grid-column: 8 / span 5;
+  font-size: var(--t-small);
+  color: var(--c-ink-soft);
+  padding-bottom: 0.4rem;
+}
+
+.day {
+  display: block;
+  padding-block: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+  border-top: 1px solid var(--line-dark);
+}
+
+.day:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+/* --- Shared day pieces ---------------------------------------------------- */
+.day__head {
+  display: grid;
+  grid-template-columns: auto auto;
+  /* `auto` tracks stretch to fill by default, which pushed the date far from
+     the day number. Pack them to the start instead. */
+  justify-content: start;
+  gap: 0.2rem var(--s-3);
+  align-items: baseline;
+  margin-bottom: var(--s-4);
+}
+
+.day__num {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
+  line-height: 1;
+}
+
+.day__date {
+  font-size: var(--t-micro);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--c-ink-faint);
+}
+
+.day__head h3 {
+  grid-column: 1 / -1;
+  margin-top: var(--s-2);
+  max-width: 18ch;
+}
+
+.day__items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line-dark-soft);
+}
+
+.day__items li {
+  position: relative;
+  padding: var(--s-2) 0 var(--s-2) 1.5rem;
+  border-bottom: 1px solid var(--line-dark-soft);
+  font-size: var(--t-small);
+  line-height: 1.6;
+}
+
+.day__items li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.3em;
+  width: 0.65rem;
+  height: 1px;
+  background: var(--c-champagne);
+}
+
+.day__lede {
+  margin-top: var(--s-3);
+  color: var(--c-ink-soft);
+  max-width: 46ch;
+}
+
+.day__note {
+  margin-top: var(--s-4);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line-dark);
+  font-size: var(--t-small);
+  color: var(--c-ink-soft);
+  max-width: 64ch;
+}
+
+/* --- Day 1: large frame, then a strip of three ---------------------------- */
+.day__top {
+  align-items: center;
+}
+
+.day__lead {
+  grid-column: 1 / span 7;
+}
+
+.day--one .day__lead .frame {
+  aspect-ratio: 3 / 2;
+}
+
+.day--one .day__body {
+  grid-column: 9 / span 4;
+}
+
+.day__strip {
+  margin-top: var(--s-4);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 0.4rem + 2vw, 2rem);
+  align-items: start;
+}
+
+.day__strip .frame {
+  aspect-ratio: 3 / 2;
+}
+
+/* --- Day 2: a full-width lagoon photograph carries the day ---------------- */
+.day__bleed {
+  width: 100%;
+  margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  background: var(--c-sand-deep);
+}
+
+.day__bleed img {
+  width: 100%;
+  height: clamp(16rem, 40vw, 30rem);
+  object-fit: cover;
+}
+
+.day__two-body {
+  align-items: start;
+}
+
+.day--two .day__body {
+  grid-column: 1 / span 5;
+}
+
+.day__aside {
+  grid-column: 7 / span 6;
+}
+
+.day__aside .frame {
+  aspect-ratio: 3 / 2;
+}
+
+/* --- Day 3: the optional-activity gallery --------------------------------- */
+.day--three .day__body {
+  max-width: 46rem;
+}
+
+.activities {
+  margin: clamp(2rem, 1.5rem + 2vw, 3rem) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(0.75rem, 0.4rem + 1.4vw, 1.5rem);
+}
+
+.activity .frame {
+  aspect-ratio: 4 / 5;
+}
+
+.activity img {
+  transition: transform var(--dur) var(--ease);
+}
+
+.activity:hover img {
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .activity img,
+  .activity:hover img {
+    transition: none;
+    transform: none;
+  }
+}
+
+.activity__name {
+  margin: var(--s-2) 0 0;
+  font-family: var(--font-text);
+  font-size: var(--t-small);
+  font-weight: 450;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+/* --- Day 4: calm and open ------------------------------------------------- */
+.day__four-body {
+  align-items: start;
+}
+
+.day--four .day__body {
+  grid-column: 1 / span 4;
+}
+
+.day__four-a {
+  grid-column: 6 / span 7;
+}
+
+.day__four-a .frame {
+  aspect-ratio: 3 / 2;
+}
+
+.day__four-b {
+  grid-column: 6 / span 3;
+  margin-top: clamp(1rem, 0.5rem + 2vw, 2.5rem);
+}
+
+.day__four-c {
+  grid-column: 10 / span 3;
+  margin-top: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+}
+
+.day__four-b .frame,
+.day__four-c .frame {
+  aspect-ratio: 4 / 5;
+}
+
+/* --- Where you stay ------------------------------------------------------- */
+.itinerary__foot {
+  margin-top: clamp(2.5rem, 2rem + 3vw, 4rem);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--line-dark);
+}
+
+.stayin {
+  grid-column: 1 / span 7;
+}
+
+.stayin__label {
+  font-family: var(--font-text);
+}
+
+.stayin__list {
+  margin: var(--s-3) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+  border-top: 1px solid var(--line-dark);
+  padding-top: var(--s-3);
+}
+
+.stayin__list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stayin__place {
+  font-size: var(--t-micro);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+}
+
+.stayin__property {
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  line-height: 1.1;
+}
+
+.stayin__note {
+  grid-column: 9 / span 4;
+  font-size: var(--t-small);
+  color: var(--c-ink-soft);
+}
+
+/* ==========================================================================
+   Gallery
+   ========================================================================== */
+
+.gallery {
+  background: var(--c-ivory);
+}
+
+.gallery__head {
+  align-items: end;
+  padding-bottom: var(--s-5);
+}
+
+.gallery__head h2 {
+  grid-column: 1 / span 6;
+  max-width: 12ch;
+}
+
+.gallery__intro {
+  grid-column: 8 / span 5;
+  font-size: var(--t-small);
+  color: var(--c-ink-soft);
+  padding-bottom: 0.4rem;
+}
+
+/* Deliberately uneven tiles — never a wall of identical squares.
+   Fixed auto-rows give every tile a predictable height, so spanning cells
+   cannot stretch into empty space; `dense` backfills the gaps they leave. */
+.gallery__grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: clamp(7rem, 9.5vw, 10rem);
+  grid-auto-flow: dense;
+  gap: clamp(0.75rem, 0.4rem + 1.4vw, 1.5rem);
+}
+
+.gallery__cell--wide {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+.gallery__cell--tall {
+  grid-column: span 2;
+  grid-row: span 3;
+}
+
+.gallery__cell--normal {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery__btn {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--c-sand-deep);
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.gallery__btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur) var(--ease);
+}
+
+.gallery__btn:hover img,
+.gallery__btn:focus-visible img {
+  transform: scale(1.035);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery__btn img,
+  .gallery__btn:hover img {
+    transition: none;
+    transform: none;
+  }
+}
+
+.gallery__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: var(--s-5) var(--s-3) var(--s-3);
+  font-size: var(--t-micro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--c-ivory);
+  /* The scrim has to be at full strength *behind the text* and fade only
+     above it — a gradient that fades across the words leaves bright frames
+     (pale sand, hazy sky) under 4.5:1. Measured against the rendered pixels. */
+  background: linear-gradient(
+    to top,
+    rgba(12, 30, 25, 0.92) 0%,
+    rgba(12, 30, 25, 0.88) 55%,
+    transparent 100%
+  );
+}
+
+/* ==========================================================================
+   Lightbox
+   ========================================================================== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 0.5rem + 2vw, 3rem);
+}
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 30, 25, 0.94);
+}
+
+.lightbox__inner {
+  position: relative;
+  z-index: 1;
+  width: min(74rem, 100%);
+  display: grid;
+  gap: var(--s-3);
+}
+
+.lightbox__figure {
+  margin: 0;
+  display: grid;
+  gap: var(--s-2);
+}
+
+.lightbox__figure img {
+  width: 100%;
+  max-height: min(72vh, 44rem);
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.lightbox__caption {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-3);
+  font-size: var(--t-small);
+  color: rgba(247, 245, 239, 0.86);
+}
+
+.lightbox__count {
+  font-variant-numeric: lining-nums;
+  color: rgba(247, 245, 239, 0.7);
+  white-space: nowrap;
+}
+
+.lightbox__controls {
+  display: flex;
+  gap: var(--s-2);
+}
+
+.lightbox__nav,
+.lightbox__close {
+  background: transparent;
+  color: var(--c-ivory);
+  border: 1px solid var(--line-light);
+  padding: 0.6rem 1.1rem;
+  font-size: var(--t-small);
+  letter-spacing: 0.08em;
+  transition: border-color var(--dur-fast) var(--ease),
+              background var(--dur-fast) var(--ease);
+}
+
+.lightbox__nav:hover,
+.lightbox__close:hover,
+.lightbox__nav:focus-visible,
+.lightbox__close:focus-visible {
+  border-color: var(--c-champagne);
+  background: rgba(201, 173, 123, 0.14);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(-140%);
+  text-transform: uppercase;
+  font-size: var(--t-micro);
+  letter-spacing: var(--track-label);
+}
+
+/* ==========================================================================
+   Booking call to action
+   ========================================================================== */
+
+.booking {
+  position: relative;
+  isolation: isolate;
+  color: var(--c-ivory);
+  background: var(--c-forest-deep);
+  display: grid;
+  align-items: end;
+  min-height: clamp(26rem, 52vw, 38rem);
+  overflow: hidden;
+}
+
+.booking__media,
+.booking__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.booking__media {
+  z-index: -2;
+}
+
+.booking__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* Kept only as heavy as the text needs. Measured against the rendered
+     photograph: the copy sits at 7–10:1, well clear of AA, while the sunset
+     on the right stays as warm as it was shot. */
+  background:
+    linear-gradient(
+      100deg,
+      rgba(12, 30, 25, 0.68) 0%,
+      rgba(12, 30, 25, 0.36) 44%,
+      rgba(12, 30, 25, 0.04) 78%
+    ),
+    linear-gradient(to top, rgba(12, 30, 25, 0.44) 0%, transparent 50%);
+}
+
+.booking__inner {
+  padding-block: var(--s-6) var(--s-5);
+}
+
+.booking h2 {
+  margin-top: var(--s-3);
+  color: var(--c-ivory);
+  max-width: 14ch;
+}
+
+.booking__p {
+  margin-top: var(--s-4);
+  max-width: 36ch;
+  color: rgba(247, 245, 239, 0.88);
+}
+
+.booking__actions {
+  margin-top: var(--s-5);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3) var(--s-5);
+}
+
+.booking__note {
+  margin-top: var(--s-5);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line-light-soft);
+  font-size: var(--t-micro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247, 245, 239, 0.8);
+}

@@ -1,11 +1,14 @@
 import React, { useEffect, useId, useRef, useState } from 'react';
 import { Label } from './primitives.jsx';
-import { WHATSAPP_NUMBER, whatsappIsPlaceholder, brand } from '../site.config.js';
+import { whatsappIsPlaceholder, whatsappLink, brand } from '../site.config.js';
+import { formMessage } from '../enquiry.js';
 
-const DESTINATIONS = [
-  'Mozambique',
-  'Within South Africa',
-  'Elsewhere in Southern Africa',
+/* Mirrors what is actually on offer: the one published tour, plus the two
+   enquiry-only routes. Nothing here implies a package that does not exist. */
+const TRIPS = [
+  'Mozambique Tour — Maputo & Bilene',
+  'Group booking',
+  'Custom itinerary',
   'Not decided yet'
 ];
 
@@ -14,7 +17,7 @@ const PARTY_SIZES = ['Just me', 'Two of us', '3 – 5', '6 – 10', 'More than 1
 const EMPTY = {
   name: '',
   contact: '',
-  destination: DESTINATIONS[0],
+  destination: TRIPS[0],
   travellers: PARTY_SIZES[1],
   dates: '',
   details: ''
@@ -40,20 +43,6 @@ function validate(values) {
   }
 
   return errors;
-}
-
-/** Builds the plain-text message that goes to WhatsApp. */
-function buildMessage(values) {
-  return [
-    `Hello ${brand.name} — I would like to enquire about a trip.`,
-    '',
-    `Name: ${values.name.trim()}`,
-    `Contact: ${values.contact.trim()}`,
-    `Destination: ${values.destination}`,
-    `Travellers: ${values.travellers}`,
-    `Preferred dates: ${values.dates.trim() || 'Flexible'}`,
-    `Notes: ${values.details.trim() || '—'}`
-  ].join('\n');
 }
 
 export default function Enquiry({ interest }) {
@@ -111,7 +100,7 @@ export default function Enquiry({ interest }) {
       return;
     }
 
-    const message = buildMessage(values);
+    const message = formMessage(values);
 
     /* The WhatsApp number is still the stand-in, so opening wa.me would send
        the visitor to a dead chat. Show the message to copy instead. */
@@ -125,8 +114,7 @@ export default function Enquiry({ interest }) {
       return;
     }
 
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(whatsappLink(message), '_blank', 'noopener,noreferrer');
     setDraft('');
     setStatus({
       type: 'sent',
@@ -217,10 +205,10 @@ export default function Enquiry({ interest }) {
 
               <div className="field">
                 <label className="field__label" htmlFor={`${uid}-destination`}>
-                  Destination
+                  Which trip
                 </label>
                 <select {...field('destination')}>
-                  {DESTINATIONS.map((option) => (
+                  {TRIPS.map((option) => (
                     <option key={option}>{option}</option>
                   ))}
                 </select>

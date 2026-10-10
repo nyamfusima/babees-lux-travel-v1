@@ -252,14 +252,17 @@
   position: absolute;
   inset: 0;
   z-index: -1;
+  /* The footage is bright — white sand and pale sky — so the headline needs a
+     real scrim on the left and along the bottom. Kept in the brand's dark
+     green rather than neutral black so the water stays warm. */
   background:
     linear-gradient(
       100deg,
-      rgba(13, 32, 26, 0.74) 0%,
-      rgba(13, 32, 26, 0.42) 38%,
-      rgba(13, 32, 26, 0.06) 68%
+      rgba(12, 30, 25, 0.78) 0%,
+      rgba(12, 30, 25, 0.5) 38%,
+      rgba(12, 30, 25, 0.12) 72%
     ),
-    linear-gradient(to top, rgba(13, 32, 26, 0.55), transparent 42%);
+    linear-gradient(to top, rgba(12, 30, 25, 0.74) 0%, transparent 50%);
 }
 
 .hero__inner {
@@ -311,31 +314,13 @@
   font-size: var(--t-micro);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
-  color: rgba(247, 245, 239, 0.66);
+  /* Sits over the brightest part of the footage (white sand on the right), so
+     it is held higher than the usual muted-on-dark value to clear AA. */
+  color: rgba(247, 245, 239, 0.86);
 }
 
 .hero__foot span:last-child {
   text-align: right;
-}
-
-/* Mute/play control for the background video — small, unobtrusive, keyboard
-   reachable, and only rendered when the video is actually running. */
-.hero__motion {
-  position: absolute;
-  right: var(--gutter);
-  top: var(--s-5);
-  z-index: 3;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(13, 32, 26, 0.42);
-  border: 1px solid var(--line-light-soft);
-  color: var(--c-ivory);
-  padding: 0.5rem 0.8rem;
-  font-size: var(--t-micro);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  backdrop-filter: blur(2px);
 }
 
 @media (max-width: 40rem) {
@@ -349,17 +334,13 @@
     background:
       linear-gradient(
         to top,
-        rgba(13, 32, 26, 0.72) 10%,
-        rgba(13, 32, 26, 0.46) 55%,
-        rgba(13, 32, 26, 0.3) 100%
+        rgba(12, 30, 25, 0.74) 10%,
+        rgba(12, 30, 25, 0.52) 55%,
+        rgba(12, 30, 25, 0.34) 100%
       );
   }
 
   .hero__foot span:last-child {
-    display: none;
-  }
-
-  .hero__motion {
     display: none;
   }
 }

@@ -1,49 +1,71 @@
 /**
- * Single source of truth for everything the client still has to confirm.
- * Nothing in here should be invented — leave a value as a placeholder until
- * Babee's Lux Travel supplies the real one.
+ * Business details for Babee's Lux Travel.
+ *
+ * The phone number, email address and business name below were read directly
+ * off the client's own trip posters. Nothing here is invented. Anything the
+ * posters do not settle is marked and left unlinked rather than guessed.
  */
 
 /**
- * PLACEHOLDER — NOT A REAL NUMBER.
+ * WhatsApp booking number — VERIFIED from the posters.
  *
- * Replace with the client's WhatsApp number in international format, digits
- * only: no "+", spaces, brackets or dashes. A South African mobile such as
- * 082 123 4567 becomes '27821234567'.
+ * Printed as "0835506183" (Poster C) and "083 550 6183" (Posters A and B).
+ * Poster A places it beside a WhatsApp icon under "Booking & Enquiries" and
+ * Poster B repeats it under "Book Now", so this is unambiguously the number
+ * that should receive bookings. It is the only number on any poster.
  *
- * While this is left at the placeholder value the enquiry form still validates
- * and still builds the message, but it does NOT open a dead WhatsApp chat —
- * it tells the visitor the channel is not connected yet and offers the message
- * to copy instead. Set the real number and the normal flow resumes.
+ * wa.me needs international format, digits only: the South African national
+ * leading 0 is dropped and country code 27 prepended.
+ *   0835506183  ->  27835506183
  */
-export const WHATSAPP_NUMBER = '27000000000';
+export const WHATSAPP_NUMBER = '27835506183';
 
-/** True while the number above is still the stand-in. */
+/** Human-readable forms of the same number. */
+export const PHONE_DISPLAY = '083 550 6183';
+export const PHONE_E164 = '+27835506183';
+
+/** VERIFIED from Posters A and B. */
+export const EMAIL = 'babeesluxtravels@gmail.com';
+
+/** Guard kept in place so the form degrades safely if the number is ever reset. */
 export const whatsappIsPlaceholder = WHATSAPP_NUMBER === '27000000000';
 
 export const brand = {
   name: 'Babee’s Lux Travel',
   wordmarkTop: 'Babee’s',
   wordmarkBottom: 'Lux Travel',
-  /* Factual, drawn only from the brief: trips from South Africa to Mozambique. */
-  descriptor: 'Travel planning from South Africa',
+  descriptor: 'Mozambique tours from South Africa',
   tagline: 'Journeys planned one conversation at a time.'
 };
 
 export const nav = [
-  { href: '#journeys', label: 'Journeys' },
-  { href: '#approach', label: 'Approach' },
-  { href: '#planning', label: 'Planning' }
+  { href: '#about', label: 'The trip' },
+  { href: '#itinerary', label: 'Itinerary' },
+  { href: '#tours', label: 'Dates & price' },
+  { href: '#gallery', label: 'Gallery' },
+  { href: '#contact', label: 'Contact' }
 ];
 
 /**
- * Only verified channels belong here.
- * TikTok is the one presence confirmed in the brief, but the handle itself has
- * not been supplied — `href: null` renders it as plain text rather than a
- * broken link. Add the URL to turn it into a link.
- * Do not add Instagram, Facebook, an email address, a phone number or an
- * office address until the client provides them.
+ * TikTok — CONFIRMED by the client as @babees_luxtravel (singular "travel"),
+ * which matches the watermark on the itinerary poster. Poster A's TikTok
+ * interface showed "Babees_Luxtravels" (plural); that reading is wrong.
+ *
+ * Any entry with `href: null` renders as plain text rather than a link, so an
+ * unconfirmed channel can never send customers to the wrong account.
  */
 export const socials = [
-  { label: 'TikTok', href: null, note: 'handle to be supplied' }
+  {
+    label: 'TikTok',
+    handle: '@babees_luxtravel',
+    href: 'https://www.tiktok.com/@babees_luxtravel'
+  }
 ];
+
+/**
+ * Builds a wa.me link with a pre-filled message. encodeURIComponent keeps
+ * newlines, ampersands, percent signs and dashes intact through the URL.
+ */
+export function whatsappLink(message) {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}

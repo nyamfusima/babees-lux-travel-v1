@@ -1,10 +1,18 @@
 import React from 'react';
 import { Wordmark, ActionLink } from './primitives.jsx';
-import { brand, nav, socials } from '../site.config.js';
+import {
+  brand,
+  nav,
+  socials,
+  PHONE_DISPLAY,
+  PHONE_E164,
+  EMAIL
+} from '../site.config.js';
+import { generalWhatsappLink } from '../enquiry.js';
 
 /**
- * Footer. Only genuinely verified information appears here — no invented
- * address, registration number, phone line, awards or opening hours.
+ * Footer. Only information printed on the client's own posters appears here —
+ * no invented address, registration number, opening hours or awards.
  */
 export default function Footer({ onEnquire }) {
   const year = new Date().getFullYear();
@@ -37,8 +45,19 @@ export default function Footer({ onEnquire }) {
           </nav>
 
           <div className="footer__col">
-            <h3>Elsewhere</h3>
+            <h3>Get in touch</h3>
             <ul className="footer__list">
+              <li>
+                <a href={generalWhatsappLink()} target="_blank" rel="noopener noreferrer">
+                  WhatsApp {PHONE_DISPLAY}
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${PHONE_E164}`}>Call {PHONE_DISPLAY}</a>
+              </li>
+              <li>
+                <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+              </li>
               {socials.map((social) => (
                 <li key={social.label}>
                   {social.href ? (
@@ -57,18 +76,24 @@ export default function Footer({ onEnquire }) {
           </div>
 
           <div className="footer__col">
-            <h3>Enquiries</h3>
-            <ActionLink light href="#enquire" onClick={onEnquire}>
-              Start an enquiry
+            <h3>Bookings</h3>
+            <ActionLink
+              light
+              href={generalWhatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Enquire on WhatsApp
             </ActionLink>
           </div>
         </div>
 
         <p className="footer__note">
-          Photography on this site is temporary, licensed stock used to show the
-          intended look and feel. It does not depict Babee’s Lux Travel trips,
-          properties or destinations, and none of it was photographed in
-          Mozambique.
+          Trip details, prices and dates on this site are taken from Babee’s Lux
+          Travel’s own trip posters. Photographs of Maputo and Bilene are real
+          images of those places. Images illustrating activities, pools and spas
+          are stock, and do not show a specific property or departure. No
+          booking or payment is taken on this website.
         </p>
 
         <div className="footer__bottom">

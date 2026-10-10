@@ -6,23 +6,23 @@ import { Label } from './primitives.jsx';
 const steps = [
   {
     numeral: '01',
-    title: 'Send the enquiry',
-    text: 'Fill in the short form below, or message directly. Destination, rough dates and how many of you there are is enough to start.'
+    title: 'Message on WhatsApp',
+    text: 'Tell us which departure you are looking at and how many of you are travelling. The short form on this page sends the same details.'
   },
   {
     numeral: '02',
-    title: 'We talk it through',
-    text: 'A conversation about what you want from the trip — the pace, the budget you have in mind and anything that has to work around a date or a person.'
+    title: 'We confirm the detail',
+    text: 'Availability for your date, what the price covers, what it does not, and anything that has to work around a person or a passport.'
   },
   {
     numeral: '03',
-    title: 'You get the detail in writing',
-    text: 'The proposed itinerary with what is included, what is not, and what it costs. Ask for changes as many times as you need.'
+    title: 'Secure your place',
+    text: 'The published booking deposit is R1 200. Babee’s Lux Travel will confirm the amount, how to pay it and by when — none of that happens on this website.'
   },
   {
     numeral: '04',
-    title: 'Confirm when it is right',
-    text: 'Only once you are happy with the detail does anything get arranged. Nothing is held or paid for on this website.'
+    title: 'Travel',
+    text: 'Road transfer from Johannesburg, four days between Maputo and Bilene, and back again.'
   }
 ];
 
@@ -37,8 +37,8 @@ export default function Planning() {
             <span className="em">actually works.</span>
           </h2>
           <p className="planning__intro">
-            Four steps, no obligation at any of them. You can stop the
-            conversation at any point and nothing will have been booked.
+            No booking or payment is taken on this website. Everything is
+            confirmed directly with Babee’s Lux Travel before anything is owed.
           </p>
         </div>
 
