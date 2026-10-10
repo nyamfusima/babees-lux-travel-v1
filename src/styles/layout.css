@@ -17,12 +17,82 @@
    Header
    ========================================================================== */
 
+/* Fixed rather than sticky, so the hero runs up behind it and the bar can be
+   transparent over the photograph. `data-solid` is set by the header component
+   once the hero has scrolled past. */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background var(--dur-hover) var(--ease-out),
+    border-color var(--dur-hover) var(--ease-out);
+}
+
+/* Over the hero the bar carries its own soft scrim. Without it the links sit
+   on open sky, which is the brightest part of the frame. It fades out as the
+   solid background fades in, so the two never stack. */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(12, 30, 25, 0.72) 0%,
+    rgba(12, 30, 25, 0.54) 64%,
+    rgba(12, 30, 25, 0) 100%
+  );
+  transition: opacity var(--dur-hover) var(--ease-out);
+}
+
+.header[data-solid='true'] {
   background: var(--c-ivory);
-  border-bottom: 1px solid var(--line-dark-soft);
+  border-bottom-color: var(--line-dark-soft);
+}
+
+.header[data-solid='true']::before {
+  opacity: 0;
+}
+
+/* --- Transparent state: light type over the photograph ------------------- */
+.header:not([data-solid='true']) .wordmark__top {
+  color: var(--c-ivory);
+}
+
+.header:not([data-solid='true']) .wordmark__bottom {
+  color: rgba(247, 245, 239, 0.82);
+}
+
+.header:not([data-solid='true']) .nav__link {
+  color: rgba(247, 245, 239, 0.9);
+}
+
+.header:not([data-solid='true']) .nav__link:hover,
+.header:not([data-solid='true']) .nav__link:focus-visible {
+  color: var(--c-ivory);
+}
+
+.header:not([data-solid='true']) .nav__cta {
+  color: var(--c-ivory);
+}
+
+.header:not([data-solid='true']) .nav__toggle {
+  color: var(--c-ivory);
+}
+
+/* The wordmark and links need a transition of their own, or the colour snaps
+   while the background fades. */
+.header .wordmark__top,
+.header .wordmark__bottom,
+.header .nav__link,
+.header .nav__cta,
+.header .nav__toggle {
+  transition: color var(--dur-hover) var(--ease-out);
 }
 
 .header__inner {
@@ -225,7 +295,7 @@
   isolation: isolate;
   /* Fills the viewport below the sticky header, but never grows absurdly
      tall on a large desktop display. */
-  min-height: clamp(34rem, calc(100svh - 5.25rem), 54rem);
+  min-height: clamp(34rem, 100svh, 54rem);
   display: grid;
   background: var(--c-forest-deep);
   color: var(--c-ivory);
@@ -270,7 +340,8 @@
   max-width: var(--max-w);
   margin-inline: auto;
   padding-inline: var(--gutter);
-  padding-block: var(--s-6) var(--s-5);
+  /* Top padding clears the fixed bar. */
+  padding-block: calc(var(--s-6) + 2.5rem) var(--s-5);
   display: grid;
   grid-template-rows: 1fr auto;
   gap: var(--s-5);
@@ -317,7 +388,7 @@
 
 @media (max-width: 40rem) {
   .hero {
-    min-height: clamp(30rem, calc(100svh - 4.5rem), 44rem);
+    min-height: clamp(30rem, 100svh, 44rem);
   }
 
   /* Narrow screens put the headline across the full frame rather than in the
