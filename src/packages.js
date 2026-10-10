@@ -75,7 +75,7 @@ export const mozambiqueTour = {
   includes: [
     '1 night in Maputo and 3 nights in Bilene',
     'Daily breakfast',
-    'Maputo city tour — Railway Station, Fish Market, Praça da Independência',
+    'Maputo city tour, taking in the railway station, the fish market and Praça da Independência',
     'Visit to Costa do Sol (South Beach)',
     'Sunset cruise in Maputo Bay',
     'Boat cruise to Koko Beach on day two',
@@ -112,7 +112,7 @@ export const mozambiqueTour = {
   itinerary: [
     {
       day: 'Day 1',
-      title: 'Johannesburg to Maputo',
+      title: 'Maputo',
       date: '27 Nov',
       items: [
         'Johannesburg to Maputo',
@@ -124,7 +124,7 @@ export const mozambiqueTour = {
     },
     {
       day: 'Day 2',
-      title: 'Maputo to Bilene',
+      title: 'Bilene',
       date: '28 Nov',
       items: [
         'Breakfast at the hotel',
@@ -136,7 +136,7 @@ export const mozambiqueTour = {
     },
     {
       day: 'Day 3',
-      title: 'Your day, your adventure',
+      title: 'Optional activities',
       date: '29 Nov',
       optional: true,
       items: [
@@ -149,7 +149,7 @@ export const mozambiqueTour = {
     },
     {
       day: 'Day 4',
-      title: 'A final day by the lagoon',
+      title: 'Relaxation',
       date: '30 Nov',
       items: [
         'Visit Bilene market',

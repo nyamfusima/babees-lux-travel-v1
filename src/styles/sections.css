@@ -295,9 +295,8 @@
 
 .journey__note {
   margin-top: var(--s-3);
-  font-size: var(--t-micro);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: var(--t-small);
+  letter-spacing: 0.01em;
   color: var(--c-ink-faint);
 }
 

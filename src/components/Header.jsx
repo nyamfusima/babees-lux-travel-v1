@@ -35,7 +35,7 @@ export default function Header({ menuOpen, setMenuOpen, onEnquire }) {
   return (
     <header className="header">
       <div className="shell header__inner">
-        <a href="#top" aria-label={`${brand.name} — home`} onClick={close}>
+        <a href="#top" aria-label={`${brand.name}, home`} onClick={close}>
           <Wordmark />
         </a>
 

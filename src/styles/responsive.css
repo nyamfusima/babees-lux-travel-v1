@@ -457,3 +457,118 @@
     gap: var(--s-3);
   }
 }
+
+/* ==========================================================================
+   Mobile ergonomics
+   Touch targets and label sizes, applied only where a finger is the pointer.
+   Measured: every action was 27px tall against a 44px minimum, and the menu
+   button was 37px.
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+  /* Micro labels are the site's connective tissue and were set at 11px for a
+     mouse. One step up makes them comfortable to read on a handset without
+     losing the tracked, editorial look. */
+  :root {
+    --t-micro: 0.75rem;
+  }
+
+  .wordmark__bottom {
+    font-size: 0.6875rem;
+  }
+
+  /* --- Touch targets -----------------------------------------------------
+     The underlined text action is the primary control across the whole site.
+     It keeps its rule, but gains enough height to be a 44px target. */
+  .link {
+    min-height: 44px;
+    padding-top: 0.7rem;
+    padding-bottom: 0.55rem;
+    align-items: center;
+  }
+
+  .nav__toggle {
+    min-height: 44px;
+    padding-block: 0.7rem;
+  }
+
+  .nav__close {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Footer links sit in a tight column; give each its own comfortable row. */
+  .footer__list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .footer__list {
+    gap: 0.2rem;
+  }
+
+  .footer__bottom a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  /* Contact rows are the most likely thing to be tapped on a phone. */
+  .channel > a,
+  .channel > div {
+    min-height: 60px;
+  }
+
+  /* Lightbox controls need to be reachable with a thumb. */
+  .lightbox__nav,
+  .lightbox__close {
+    min-height: 44px;
+    min-width: 56px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* --- Spacing so enlarged targets cannot collide ------------------------ */
+  .hero__actions,
+  .booking__actions,
+  .tours__actions,
+  .trip-intro__actions {
+    gap: var(--s-2) var(--s-4);
+  }
+
+  .departure {
+    row-gap: var(--s-1);
+    padding-block: var(--s-3) var(--s-2);
+  }
+
+  /* --- Form ------------------------------------------------------------- */
+  /* Two tracked labels side by side wrap into cramped columns; stack them. */
+  .form__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  /* 16px keeps iOS from zooming the page when a field takes focus. */
+  .field input,
+  .field select,
+  .field textarea {
+    font-size: 1rem;
+    min-height: 44px;
+  }
+
+  .field textarea {
+    min-height: 5rem;
+  }
+}
+
+/* --- Very narrow phones --------------------------------------------------- */
+@media (max-width: 22.5rem) {
+  .hero__foot {
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+  }
+}

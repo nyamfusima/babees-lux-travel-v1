@@ -22,7 +22,7 @@ export default function Footer({ onEnquire }) {
       <div className="shell">
         <div className="grid12">
           <div className="footer__brand">
-            <a href="#top" aria-label={`${brand.name} — back to top`}>
+            <a href="#top" aria-label={`${brand.name}, back to top`}>
               <Wordmark />
             </a>
             <p className="footer__tagline">{brand.tagline}</p>

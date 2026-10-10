@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Label, ActionLink } from './primitives.jsx';
+import { ActionLink } from './primitives.jsx';
 import { heroMedia } from '../media.js';
 import { mozambiqueTour, getDepartures } from '../packages.js';
 import { packageWhatsappLink, departureLabel } from '../enquiry.js';
@@ -70,22 +70,16 @@ export default function Hero() {
 
       <div className="hero__inner">
         <div className="hero__copy">
-          <Label light>Mozambique · 4 days</Label>
-
-          <h1>
-            Four days.
-            <br />
-            A <span className="em">different</span> world.
-          </h1>
+          <h1>Four days in Mozambique.</h1>
 
           <p className="hero__lede">
-            From the energy of Maputo to the turquoise waters of Bilene, a
-            coastal escape built around the things you will actually remember.
+            From the streets of Maputo to the clear waters of Bilene, four days
+            of coastal experiences, local culture and time to unwind.
           </p>
 
           <div className="hero__actions">
             <ActionLink light href="#itinerary">
-              Explore the itinerary
+              Explore the trip
             </ActionLink>
             <ActionLink
               light
@@ -98,14 +92,11 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero__foot">
-          <span>
-            {next
-              ? `Next departure — ${departureLabel(next)}`
-              : 'Maputo & Bilene — 4 days'}
-          </span>
-          <span>Johannesburg — Mozambique</span>
-        </div>
+        {/* One line only. The hero carries a headline, a paragraph and two
+            actions; anything more stacked over the photograph is clutter. */}
+        <p className="hero__foot">
+          {next ? `Next departure: ${departureLabel(next)}` : `${mozambiqueTour.duration} from Johannesburg`}
+        </p>
       </div>
     </section>
   );

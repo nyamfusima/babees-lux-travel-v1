@@ -40,17 +40,15 @@ export default function BookingCta() {
       <div className="booking__scrim" aria-hidden="true" />
 
       <div className="shell booking__inner">
-        <Label light>Maputo &amp; Bilene · 4 days</Label>
-
         <h2 id="booking-title">
-          Ready for your
+          Let’s plan your
           <br />
-          <span className="em">Mozambique escape?</span>
+          <span className="em">Mozambique escape.</span>
         </h2>
 
         <p className="booking__p">
-          Get in touch with {brand.name} to enquire about this trip and the
-          available booking details.
+          Interested in this trip? Get in touch with {brand.name} for the
+          package details and booking information.
         </p>
 
         <div className="booking__actions">
@@ -71,9 +69,9 @@ export default function BookingCta() {
         </div>
 
         <p className="booking__note">
-          {mozambiqueTour.price.display} {mozambiqueTour.price.basis} ·{' '}
-          {mozambiqueTour.deposit.display} {mozambiqueTour.deposit.label} · no
-          payment is taken on this website
+          {mozambiqueTour.price.display} {mozambiqueTour.price.basis}. The
+          booking deposit is {mozambiqueTour.deposit.display}. No payment is
+          taken on this website.
         </p>
       </div>
     </section>

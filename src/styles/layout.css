@@ -305,23 +305,15 @@
 
 /* Foot of the hero: a hairline with meta either side. */
 .hero__foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s-4);
   padding-top: var(--s-3);
   border-top: 1px solid var(--line-light-soft);
-  font-size: var(--t-micro);
-  letter-spacing: var(--track-label);
-  text-transform: uppercase;
-  /* Sits over the brightest part of the footage (white sand on the right), so
-     it is held higher than the usual muted-on-dark value to clear AA. */
+  font-size: var(--t-small);
+  letter-spacing: 0.02em;
+  /* Sits over the brightest part of the footage, so it is held higher than
+     the usual muted-on-dark value to clear AA. */
   color: rgba(247, 245, 239, 0.86);
 }
 
-.hero__foot span:last-child {
-  text-align: right;
-}
 
 @media (max-width: 40rem) {
   .hero {

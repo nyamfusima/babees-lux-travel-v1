@@ -18,7 +18,7 @@ export function packageMessage(pkg, departure) {
   const lines = [
     `Hello ${brand.name}, I would like to enquire about the ${pkg.name} (${pkg.subtitle}).`,
     '',
-    `Package: ${pkg.name} — ${pkg.subtitle}`,
+    `Package: ${pkg.name}, ${pkg.subtitle}`,
     `Duration: ${pkg.duration}`,
     `Price listed: ${pkg.price.display} ${pkg.price.basis}`
   ];
@@ -56,6 +56,6 @@ export function formMessage(values) {
     `Trip: ${values.destination}`,
     `Travellers: ${values.travellers}`,
     `Preferred dates: ${values.dates.trim() || 'Flexible'}`,
-    `Notes: ${values.details.trim() || '—'}`
+    `Notes: ${values.details.trim() || 'None'}`
   ].join('\n');
 }

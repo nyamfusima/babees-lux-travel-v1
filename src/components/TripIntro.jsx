@@ -47,16 +47,16 @@ export default function TripIntro({ onEnquire }) {
             </h2>
 
             <p className="trip-intro__lede">
-              The road north out of Johannesburg, a night in Maputo, then on to
-              the lagoon at Bilene — four days that start in a capital city and
+              The road north out of Johannesburg, a night in Maputo, then on
+              to the lagoon at Bilene. Four days that begin in a capital city and
               end on quiet water.
             </p>
 
             <p className="trip-intro__p">
-              Day one is Maputo: the railway station, the fish market, Praça da
-              Independência and a sunset cruise on the bay. The next morning you
-              cross to Bilene and stay put, with three nights on the lagoon and
-              as little or as much to do as you want.
+              Day one is Maputo: the railway station, the fish market, Praça
+              da Independência and a sunset cruise on the bay. The next morning
+              you cross to Bilene and stay there, with three nights on the lagoon
+              and as little or as much to do as you like.
             </p>
 
             <div className="trip-intro__actions">
@@ -68,7 +68,7 @@ export default function TripIntro({ onEnquire }) {
           </div>
         </div>
 
-        {/* Verified facts only — each one is printed on a poster. */}
+        {/* Verified facts only. Each one is printed on a poster. */}
         <dl className="factstrip">
           {facts.map((f) => (
             <div className="factstrip__item" key={f.label}>

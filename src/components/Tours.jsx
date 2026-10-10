@@ -31,9 +31,9 @@ export default function Tours({ onEnquire }) {
         <div className="grid12 tours__body">
           <div className="tours__detail">
             <p className="tours__lede">
-              Four days between Maputo and Bilene — a city tour, a sunset cruise
-              on the bay, then three nights on the lagoon. Road transfer from
-              Johannesburg and back is part of the price.
+              Four days between Maputo and Bilene, with a city tour, a sunset
+              cruise on the bay and three nights on the lagoon. Road transfer
+              from Johannesburg and back is part of the price.
             </p>
 
             {/* Price and the hard facts, as published. */}
@@ -107,7 +107,7 @@ export default function Tours({ onEnquire }) {
             <p className="departures__past">
               {past.length} earlier 2026{' '}
               {past.length === 1 ? 'departure has' : 'departures have'} already
-              travelled{upcoming.length === 0 ? '. ' : ' — '}
+              travelled. You can{' '}
               <a href="#contact">ask about dates beyond those listed</a>.
             </p>
           ) : null}
@@ -132,7 +132,7 @@ export default function Tours({ onEnquire }) {
               ))}
             </ul>
 
-            <h3 className="inclusions__sub">Optional, at own cost</h3>
+            <h3 className="inclusions__sub">Optional, at your own cost</h3>
             <p className="inclusions__optional">
               {tour.optionalActivities.join(' · ')}
             </p>

@@ -109,8 +109,8 @@ function DayThree({ day, media }) {
         <div className="day__body day__body--centreless">
           <DayHead day={day} />
           <p className="day__lede">
-            Nothing is scheduled. The lagoon is calm enough for most of this,
-            and you pick what you feel like on the morning.
+            Nothing is scheduled. The lagoon is calm enough for most of these,
+            so you can decide on the morning.
           </p>
         </div>
 
@@ -135,9 +135,10 @@ function DayThree({ day, media }) {
         </ul>
 
         <p className="day__note">
-          Optional activities are at your own cost. Availability is not
-          guaranteed on any particular date — ask Babee’s Lux Travel what can be
-          arranged for your departure. Photographs above are illustrative.
+          These activities are optional and at your own cost. Availability is
+          not guaranteed on any particular date, so ask Babee’s Lux Travel what
+          can be arranged for your departure. The photographs above are
+          illustrative.
         </p>
       </div>
     </article>
@@ -185,14 +186,14 @@ export default function Itinerary() {
       <div className="shell">
         <div className="grid12 itinerary__head">
           <h2 id="itinerary-title">
-            Four days,
+            Your trip,
             <br />
             <span className="em">day by day.</span>
           </h2>
           <p className="itinerary__intro">
-            As published for the 27–30 November departure. Other departures
-            follow the same shape, but the calendar dates differ — confirm yours
-            when you enquire.
+            As published for the 27 to 30 November departure. Other departures
+            follow the same shape, though the calendar dates differ. Confirm
+            yours when you enquire.
           </p>
         </div>
       </div>
@@ -217,8 +218,9 @@ export default function Itinerary() {
           </ul>
           <p className="stayin__note">
             Both are named on the tour poster. Confirm the exact property for
-            your date when you book. No photographs of either property appear on
-            this page — those belong to the properties themselves.
+            your date when you book. There are no photographs of either property
+            on this page, because those images belong to the properties
+            themselves.
           </p>
         </div>
       </div>

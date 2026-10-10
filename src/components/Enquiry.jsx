@@ -6,7 +6,7 @@ import { formMessage } from '../enquiry.js';
 /* Mirrors what is actually on offer: the one published tour, plus the two
    enquiry-only routes. Nothing here implies a package that does not exist. */
 const TRIPS = [
-  'Mozambique Tour — Maputo & Bilene',
+  'Mozambique tour: Maputo and Bilene',
   'Group booking',
   'Custom itinerary',
   'Not decided yet'
@@ -38,7 +38,7 @@ function validate(values) {
     const looksLikeEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact);
     const digits = contact.replace(/\D/g, '');
     if (!looksLikeEmail && digits.length < 9) {
-      errors.contact = 'That does not look complete — please check the number or email.';
+      errors.contact = 'That does not look complete. Please check the number or email address.';
     }
   }
 
@@ -228,7 +228,7 @@ export default function Enquiry({ interest }) {
               <div className="field field--full">
                 <label className="field__label" htmlFor={`${uid}-dates`}>
                   Preferred dates{' '}
-                  <span className="field__optional">— a month or season is fine</span>
+                  <span className="field__optional">(a month or season is fine)</span>
                 </label>
                 <input {...field('dates')} type="text" placeholder="e.g. late April, or 12–19 July" />
               </div>
@@ -236,7 +236,7 @@ export default function Enquiry({ interest }) {
               <div className="field field--full">
                 <label className="field__label" htmlFor={`${uid}-details`}>
                   Anything else{' '}
-                  <span className="field__optional">— optional</span>
+                  <span className="field__optional">(optional)</span>
                 </label>
                 <textarea {...field('details')} rows={3} />
               </div>
@@ -260,7 +260,7 @@ export default function Enquiry({ interest }) {
 
             {whatsappIsPlaceholder && draft ? (
               <div className="form__placeholder-note">
-                <strong>Placeholder number — not yet connected</strong>
+                <strong>Placeholder number, not yet connected</strong>
                 <label className="sr-only" htmlFor={`${uid}-draft`}>
                   Your enquiry message, ready to copy
                 </label>

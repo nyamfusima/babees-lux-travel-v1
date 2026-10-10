@@ -379,8 +379,8 @@ export const galleryItems = [
   { ...bileneSunset, span: 'tall' },
   { ...costaDoSol, span: 'normal' },
   { ...maputoWaterfront, span: 'normal' },
-  { ...activityMedia[4], span: 'normal', caption: 'Illustrative — kayaking' },
-  { ...resortPool, span: 'wide', caption: 'Illustrative — a resort pool' }
+  { ...activityMedia[4], span: 'normal', caption: 'Illustrative: kayaking' },
+  { ...resortPool, span: 'wide', caption: 'Illustrative: a resort pool' }
 ];
 
 /* -------------------------------------------------------------------------

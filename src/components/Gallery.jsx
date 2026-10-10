@@ -85,8 +85,8 @@ export default function Gallery() {
             <span className="em">Mozambique.</span>
           </h2>
           <p className="gallery__intro">
-            Maputo and Bilene as they actually look. Select any frame to see it
-            larger.
+            Maputo and Bilene as they actually look. Select any frame to see
+            it larger.
           </p>
         </div>
 

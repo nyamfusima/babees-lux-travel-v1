@@ -228,11 +228,11 @@ button {
 }
 
 /* Caption under a photograph. Small, factual, never promotional. */
+/* Sentence case. Tracked capitals on every caption made the page shout. */
 .caption {
   margin-top: var(--s-2);
-  font-size: var(--t-micro);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: var(--t-small);
+  letter-spacing: 0.01em;
   color: var(--c-ink-faint);
 }
 

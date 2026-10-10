@@ -17,7 +17,7 @@ const steps = [
   {
     numeral: '03',
     title: 'Secure your place',
-    text: 'The published booking deposit is R1 200. Babee’s Lux Travel will confirm the amount, how to pay it and by when — none of that happens on this website.'
+    text: 'The published booking deposit is R1 200. Babee’s Lux Travel will confirm the amount, how to pay it and by when. None of that happens on this website.'
   },
   {
     numeral: '04',
