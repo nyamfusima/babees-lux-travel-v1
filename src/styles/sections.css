@@ -1,0 +1,543 @@
+/* ==========================================================================
+   Sections — approach, journeys, stays, planning, enquiry, closing, footer
+   Each section is composed differently on purpose. There is no repeated
+   three-column card grid anywhere on the page.
+   ========================================================================== */
+
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--s-4) clamp(1rem, 0.4rem + 2vw, 2.5rem);
+}
+
+/* ==========================================================================
+   Approach — asymmetric editorial introduction
+   ========================================================================== */
+
+.approach {
+  background: var(--c-ivory);
+}
+
+.approach__head {
+  align-items: start;
+}
+
+.approach__label {
+  grid-column: 1 / span 3;
+  padding-top: 0.6rem;
+}
+
+.approach__title {
+  grid-column: 4 / span 9;
+  max-width: 20ch;
+}
+
+.approach__body {
+  margin-top: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+  align-items: start;
+}
+
+.approach__figure {
+  grid-column: 1 / span 5;
+}
+
+.approach__figure .frame {
+  aspect-ratio: 4 / 5;
+}
+
+.approach__text {
+  grid-column: 7 / span 6;
+  /* Drops the text column below the top of the photograph. */
+  padding-top: clamp(0rem, -3rem + 8vw, 4rem);
+}
+
+.approach__lede {
+  font-size: var(--t-lede);
+  line-height: 1.6;
+  color: var(--c-ink);
+  max-width: 36ch;
+}
+
+.approach__p {
+  margin-top: var(--s-3);
+  color: var(--c-ink-soft);
+  max-width: 42ch;
+}
+
+/* Three short statements separated by hairlines — not icon cards. */
+.tenets {
+  margin: var(--s-5) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line-dark-soft);
+}
+
+.tenets li {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: var(--s-3);
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--line-dark-soft);
+}
+
+.tenets dt,
+.tenets h3 {
+  font-family: var(--font-text);
+  font-size: var(--t-body);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.tenets p {
+  margin-top: 0.25rem;
+  font-size: var(--t-small);
+  color: var(--c-ink-soft);
+  max-width: 40ch;
+}
+
+.approach__actions {
+  margin-top: var(--s-5);
+}
+
+/* ==========================================================================
+   Journeys — three deliberately different compositions
+   ========================================================================== */
+
+.journeys {
+  background: var(--c-sand);
+}
+
+.journeys__head {
+  align-items: end;
+  padding-bottom: var(--s-5);
+}
+
+.journeys__head h2 {
+  grid-column: 1 / span 7;
+  max-width: 16ch;
+}
+
+.journeys__intro {
+  grid-column: 9 / span 4;
+  color: var(--c-ink-soft);
+  font-size: var(--t-small);
+  padding-bottom: 0.5rem;
+}
+
+.journey {
+  padding-block: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+  border-top: 1px solid var(--line-dark);
+  align-items: center;
+}
+
+.journey__meta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  margin-bottom: var(--s-3);
+}
+
+.journey__numeral {
+  font-family: var(--font-display);
+  font-size: var(--t-numeral);
+  line-height: 0.8;
+  color: var(--c-ink);
+  opacity: 0.22;
+  font-variant-numeric: lining-nums;
+}
+
+.journey h3 {
+  margin-top: var(--s-2);
+  max-width: 20ch;
+}
+
+.journey__lede {
+  margin-top: var(--s-3);
+  color: var(--c-ink-soft);
+  max-width: 44ch;
+}
+
+.journey__note {
+  margin-top: var(--s-3);
+  font-size: var(--t-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink-faint);
+}
+
+.journey__actions {
+  margin-top: var(--s-4);
+}
+
+/* -- 01 "wide": tall photograph left, text right ------------------------- */
+.journey--wide .journey__figure {
+  grid-column: 1 / span 5;
+}
+
+.journey--wide .journey__figure .frame {
+  aspect-ratio: 4 / 5;
+}
+
+.journey--wide .journey__content {
+  grid-column: 7 / span 5;
+}
+
+/* -- 02 "offset": text left, wide photograph right, reversed reading order */
+.journey--offset .journey__content {
+  grid-column: 1 / span 4;
+}
+
+.journey--offset .journey__figure {
+  grid-column: 6 / span 7;
+}
+
+.journey--offset .journey__figure .frame {
+  aspect-ratio: 3 / 2;
+}
+
+/* -- 03 "full": photograph across the grid, content beneath it ----------- */
+.journey--full .journey__figure {
+  grid-column: 1 / -1;
+}
+
+.journey--full .journey__figure .frame {
+  aspect-ratio: 21 / 9;
+}
+
+.journey--full .journey__content {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--s-4) clamp(1rem, 0.4rem + 2vw, 2.5rem);
+  align-items: start;
+  margin-top: var(--s-4);
+}
+
+.journey--full .journey__head {
+  grid-column: 1 / span 5;
+}
+
+.journey--full .journey__tail {
+  grid-column: 7 / span 5;
+}
+
+.journey--full .journey h3,
+.journey--full h3 {
+  max-width: 18ch;
+}
+
+/* Honest standing note about what the journeys are and are not. */
+.journeys__disclaimer {
+  margin-top: var(--s-5);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line-dark);
+  font-size: var(--t-small);
+  color: var(--c-ink-soft);
+  max-width: 62ch;
+}
+
+/* ==========================================================================
+   Stays — two-photograph editorial spread on different baselines
+   ========================================================================== */
+
+.stays {
+  background: var(--c-ivory);
+}
+
+.stays__copy {
+  grid-column: 1 / span 4;
+  align-self: center;
+}
+
+.stays__copy h2 {
+  margin-top: var(--s-3);
+  max-width: 12ch;
+}
+
+.stays__copy p {
+  margin-top: var(--s-3);
+  color: var(--c-ink-soft);
+  font-size: var(--t-small);
+  max-width: 34ch;
+}
+
+.stays__a {
+  grid-column: 6 / span 4;
+}
+
+.stays__a .frame {
+  aspect-ratio: 3 / 4;
+}
+
+.stays__b {
+  grid-column: 10 / span 3;
+  /* Dropped down so the pair never reads as a tidy two-up. */
+  margin-top: clamp(2rem, 1rem + 5vw, 6rem);
+}
+
+.stays__b .frame {
+  aspect-ratio: 4 / 5;
+}
+
+/* ==========================================================================
+   Planning — numbered editorial list
+   ========================================================================== */
+
+.planning {
+  background: var(--c-forest);
+  color: var(--c-ivory);
+}
+
+.planning h2 {
+  color: var(--c-ivory);
+}
+
+.planning__head {
+  align-items: end;
+  padding-bottom: var(--s-5);
+}
+
+.planning__head h2 {
+  grid-column: 1 / span 6;
+  max-width: 14ch;
+}
+
+.planning__intro {
+  grid-column: 8 / span 5;
+  color: rgba(247, 245, 239, 0.72);
+  font-size: var(--t-small);
+  padding-bottom: 0.4rem;
+}
+
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  border-top: 1px solid var(--line-light-soft);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: minmax(3.5rem, 1fr) minmax(0, 4fr) minmax(0, 5fr);
+  gap: var(--s-3) clamp(1rem, 0.4rem + 2vw, 2.5rem);
+  align-items: baseline;
+  padding-block: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+  border-bottom: 1px solid var(--line-light-soft);
+}
+
+.step__numeral {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+  line-height: 1;
+  color: var(--c-champagne);
+  font-variant-numeric: lining-nums;
+}
+
+.step h3 {
+  color: var(--c-ivory);
+  max-width: 16ch;
+}
+
+.step p {
+  color: rgba(247, 245, 239, 0.72);
+  font-size: var(--t-small);
+  line-height: 1.65;
+  max-width: 48ch;
+}
+
+/* ==========================================================================
+   Enquiry
+   ========================================================================== */
+
+.enquiry {
+  background: var(--c-forest-deep);
+  color: var(--c-ivory);
+}
+
+.enquiry h2 {
+  color: var(--c-ivory);
+}
+
+.enquiry__copy {
+  grid-column: 1 / span 5;
+}
+
+.enquiry__copy h2 {
+  margin-top: var(--s-3);
+  max-width: 13ch;
+}
+
+.enquiry__p {
+  margin-top: var(--s-4);
+  color: rgba(247, 245, 239, 0.76);
+  max-width: 36ch;
+}
+
+.enquiry__aside {
+  margin-top: var(--s-5);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line-light-soft);
+  font-size: var(--t-small);
+  color: rgba(247, 245, 239, 0.62);
+  max-width: 34ch;
+}
+
+.enquiry__form {
+  grid-column: 7 / span 6;
+}
+
+/* ==========================================================================
+   Closing invitation
+   ========================================================================== */
+
+.closing {
+  position: relative;
+  background: var(--c-sand);
+}
+
+.closing__figure .frame {
+  aspect-ratio: 21 / 9;
+  min-height: 18rem;
+}
+
+.closing__panel {
+  position: relative;
+  z-index: 2;
+  background: var(--c-ivory);
+  padding: clamp(1.75rem, 1rem + 3vw, 3rem);
+  max-width: 34rem;
+  /* Overlaps the photograph's lower-left corner. */
+  margin-top: clamp(-5rem, -3rem - 4vw, -2rem);
+  margin-left: 0;
+}
+
+.closing__panel h2 {
+  margin-top: var(--s-3);
+  max-width: 14ch;
+}
+
+.closing__panel p {
+  margin-top: var(--s-3);
+  color: var(--c-ink-soft);
+  font-size: var(--t-small);
+  max-width: 40ch;
+}
+
+.closing__panel .link {
+  margin-top: var(--s-4);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  background: var(--c-forest);
+  color: var(--c-ivory);
+  padding-block: var(--s-6) var(--s-4);
+}
+
+.footer .wordmark__top {
+  color: var(--c-ivory);
+  font-size: 1.75rem;
+}
+
+.footer .wordmark__bottom {
+  color: rgba(247, 245, 239, 0.6);
+}
+
+.footer__brand {
+  grid-column: 1 / span 4;
+}
+
+.footer__tagline {
+  margin-top: var(--s-3);
+  color: rgba(247, 245, 239, 0.66);
+  font-size: var(--t-small);
+  max-width: 26ch;
+}
+
+/* 4 + 3 + 3 + 2 fills the twelve tracks exactly; anything wider wraps the
+   last column onto its own row. */
+.footer__col {
+  grid-column: span 3;
+}
+
+.footer__col:last-of-type {
+  grid-column: span 2;
+}
+
+.footer__col h3 {
+  font-family: var(--font-text);
+  font-size: var(--t-micro);
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: rgba(247, 245, 239, 0.64);
+  margin-bottom: var(--s-3);
+}
+
+.footer__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.footer__list a {
+  font-size: var(--t-small);
+  color: rgba(247, 245, 239, 0.86);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.footer__list a:hover,
+.footer__list a:focus-visible {
+  border-bottom-color: var(--c-champagne);
+}
+
+.footer__list span {
+  font-size: var(--t-small);
+  color: rgba(247, 245, 239, 0.66);
+}
+
+/* A channel the client has not supplied yet: shown, but plainly unlinked. */
+.footer__pending {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: var(--t-micro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247, 245, 239, 0.64);
+}
+
+.footer__bottom {
+  margin-top: var(--s-4);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line-light-soft);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+  justify-content: space-between;
+  font-size: var(--t-micro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247, 245, 239, 0.64);
+}
+
+/* Standing provenance note. Plain paragraph — deliberately not part of the
+   bottom bar, so it keeps a readable measure and a single rule above it. */
+.footer__note {
+  margin-top: var(--s-5);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line-light-soft);
+  max-width: 62ch;
+  font-size: var(--t-small);
+  line-height: 1.7;
+  color: rgba(247, 245, 239, 0.58);
+}

@@ -1,0 +1,268 @@
+/* ==========================================================================
+   Base — reset, typography defaults, shared primitives
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--c-ivory);
+  color: var(--c-ink);
+  font-family: var(--font-text);
+  font-size: var(--t-body);
+  font-weight: 350;
+  line-height: 1.6;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  /* Guards against any single wide child forcing a sideways scroll. */
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.012em;
+  margin: 0;
+  /* Didones look thin and mean when too tightly packed at small sizes. */
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--t-h1); }
+h2 { font-size: var(--t-h2); }
+h3 { font-size: var(--t-h3); line-height: 1.14; }
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* --- Focus -----------------------------------------------------------------
+   One visible, high-contrast focus ring used everywhere. Never removed. */
+:focus-visible {
+  outline: 2px solid var(--c-champagne);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* --- Skip link -------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: var(--s-3);
+  top: var(--s-3);
+  z-index: 200;
+  transform: translateY(-200%);
+  background: var(--c-forest);
+  color: var(--c-ivory);
+  padding: 0.75rem 1.25rem;
+  font-size: var(--t-small);
+  letter-spacing: var(--track-nav);
+  text-transform: uppercase;
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* --- Shared primitives ------------------------------------------------------ */
+
+/* Tracked uppercase micro-label. The site's connective tissue. */
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: var(--t-micro);
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+}
+
+.label::before {
+  content: '';
+  width: 1.75rem;
+  height: 1px;
+  background: var(--c-champagne);
+  flex: none;
+}
+
+.label--plain::before {
+  display: none;
+}
+
+.label--light {
+  color: rgba(247, 245, 239, 0.78);
+}
+
+/* Numeric index used down the left edge of editorial rows. */
+.index {
+  font-family: var(--font-display);
+  font-size: var(--t-small);
+  letter-spacing: 0.08em;
+  color: var(--c-ink-faint);
+  font-variant-numeric: lining-nums;
+}
+
+/* Italic display emphasis — the one flourish allowed in headings. */
+.em {
+  font-style: italic;
+}
+
+/* Underlined text action. Replaces pill buttons across the site. */
+.link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.55em;
+  font-size: var(--t-small);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--line-dark);
+  transition: border-color var(--dur-fast) var(--ease),
+              color var(--dur-fast) var(--ease);
+  background: none;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  text-align: left;
+}
+
+.link:hover,
+.link:focus-visible {
+  border-bottom-color: var(--c-champagne);
+  color: var(--c-forest);
+}
+
+.link__arrow {
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.link:hover .link__arrow {
+  transform: translateX(0.2em);
+}
+
+.link--light {
+  color: var(--c-ivory);
+  border-bottom-color: var(--line-light);
+}
+
+.link--light:hover,
+.link--light:focus-visible {
+  color: var(--c-ivory);
+  border-bottom-color: var(--c-champagne);
+}
+
+/* Solid action, used sparingly — the form submit and nothing else. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  width: 100%;
+  padding: 1.05rem 1.35rem;
+  background: var(--c-forest);
+  color: var(--c-ivory);
+  border: 1px solid var(--c-forest);
+  font-size: var(--t-small);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background var(--dur-fast) var(--ease),
+              color var(--dur-fast) var(--ease);
+}
+
+.button:hover:not(:disabled),
+.button:focus-visible:not(:disabled) {
+  background: var(--c-forest-deep);
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Caption under a photograph. Small, factual, never promotional. */
+.caption {
+  margin-top: var(--s-2);
+  font-size: var(--t-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-ink-faint);
+}
+
+/* Visually hidden but available to assistive technology. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Figures are never rounded cards; the crop does the work. */
+figure {
+  margin: 0;
+}
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-sand-deep);
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -1,0 +1,231 @@
+/* ==========================================================================
+   Responsive — the 12-column editorial grid folds down in two stages.
+   Checked at 360, 390, 768, 1024 and wide desktop.
+   ========================================================================== */
+
+/* --- Tablet / small laptop (≤ 1024px) ------------------------------------ */
+@media (max-width: 64rem) {
+  .approach__label {
+    grid-column: 1 / -1;
+  }
+
+  .approach__title {
+    grid-column: 1 / -1;
+  }
+
+  .approach__figure {
+    grid-column: 1 / span 6;
+  }
+
+  .approach__text {
+    grid-column: 8 / span 5;
+    padding-top: 0;
+  }
+
+  .journeys__head h2 {
+    grid-column: 1 / span 8;
+  }
+
+  .journeys__intro {
+    grid-column: 1 / span 7;
+  }
+
+  .journey--wide .journey__figure {
+    grid-column: 1 / span 6;
+  }
+
+  .journey--wide .journey__content {
+    grid-column: 8 / span 5;
+  }
+
+  .journey--offset .journey__content {
+    grid-column: 1 / span 5;
+  }
+
+  .journey--offset .journey__figure {
+    grid-column: 7 / span 6;
+  }
+
+  .journey--full .journey__head {
+    grid-column: 1 / span 6;
+  }
+
+  .journey--full .journey__tail {
+    grid-column: 7 / span 6;
+  }
+
+  .stays__copy {
+    grid-column: 1 / -1;
+  }
+
+  .stays__a {
+    grid-column: 1 / span 6;
+  }
+
+  .stays__b {
+    grid-column: 8 / span 5;
+  }
+
+  .planning__head h2,
+  .planning__intro {
+    grid-column: 1 / -1;
+  }
+
+  .step {
+    grid-template-columns: 3rem minmax(0, 1fr);
+  }
+
+  .step p {
+    grid-column: 2;
+    max-width: 56ch;
+  }
+
+  .enquiry__copy,
+  .enquiry__form {
+    grid-column: 1 / -1;
+  }
+
+  .enquiry__form {
+    margin-top: var(--s-5);
+  }
+
+  .footer__brand {
+    grid-column: 1 / span 6;
+  }
+
+  .footer__col {
+    grid-column: span 3;
+  }
+}
+
+/* --- Portrait tablet and below (≤ 768px) --------------------------------- */
+@media (max-width: 48rem) {
+  .approach__figure,
+  .approach__text {
+    grid-column: 1 / -1;
+  }
+
+  .approach__figure .frame {
+    aspect-ratio: 3 / 2;
+  }
+
+  .approach__text {
+    margin-top: var(--s-4);
+  }
+
+  .journey {
+    row-gap: var(--s-4);
+  }
+
+  .journey--wide .journey__figure,
+  .journey--wide .journey__content,
+  .journey--offset .journey__figure,
+  .journey--offset .journey__content,
+  .journey--full .journey__head,
+  .journey--full .journey__tail {
+    grid-column: 1 / -1;
+  }
+
+  /* Photograph first on every journey once stacked, so the rhythm is even. */
+  .journey--offset .journey__figure {
+    order: -1;
+  }
+
+  .journey--wide .journey__figure .frame {
+    aspect-ratio: 3 / 2;
+  }
+
+  .journey--full .journey__figure .frame {
+    aspect-ratio: 16 / 9;
+  }
+
+  .stays__a,
+  .stays__b {
+    grid-column: 1 / -1;
+  }
+
+  .stays__b {
+    margin-top: 0;
+  }
+
+  .stays__a .frame,
+  .stays__b .frame {
+    aspect-ratio: 4 / 5;
+  }
+
+  .closing__figure .frame {
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+
+  .closing__panel {
+    max-width: none;
+    margin-top: -2rem;
+  }
+
+  .form__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .field {
+    grid-column: 1 / -1;
+  }
+
+  .footer__brand,
+  .footer__col {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- Phones (≤ 480px) ----------------------------------------------------- */
+@media (max-width: 30rem) {
+  .journeys__head h2,
+  .journeys__intro {
+    grid-column: 1 / -1;
+  }
+
+  .journey__numeral {
+    font-size: 2.25rem;
+  }
+
+  .step {
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    column-gap: var(--s-3);
+  }
+
+  .step__numeral {
+    font-size: 1.5rem;
+  }
+
+  .hero__inner {
+    padding-block: var(--s-5) var(--s-4);
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+  }
+}
+
+/* --- Very narrow phones (≤ 360px) ---------------------------------------- */
+@media (max-width: 22.5rem) {
+  :root {
+    --t-h1: 2.5rem;
+    --gutter: 1.125rem;
+  }
+
+  .wordmark__bottom {
+    letter-spacing: 0.28em;
+  }
+
+  .hero__foot {
+    font-size: 0.625rem;
+    letter-spacing: 0.14em;
+  }
+}
+
+/* --- Wide desktop --------------------------------------------------------- */
+@media (min-width: 100rem) {
+  :root {
+    --max-w: 90rem;
+  }
+}

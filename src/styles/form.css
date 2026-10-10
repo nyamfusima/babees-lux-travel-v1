@@ -1,0 +1,198 @@
+/* ==========================================================================
+   Enquiry form — underlined fields on the dark panel, no boxed inputs
+   ========================================================================== */
+
+.form__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--line-light);
+  font-size: var(--t-micro);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: rgba(247, 245, 239, 0.62);
+}
+
+.form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4) var(--s-4);
+  margin-top: var(--s-4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.field--full {
+  grid-column: 1 / -1;
+}
+
+.field__label {
+  font-size: var(--t-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(247, 245, 239, 0.66);
+}
+
+.field__optional {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: rgba(247, 245, 239, 0.58);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  background: transparent;
+  color: var(--c-ivory);
+  border: 0;
+  border-bottom: 1px solid var(--line-light);
+  border-radius: 0;
+  padding: 0.65rem 0 0.6rem;
+  font-size: var(--t-body);
+  font-weight: 350;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 3.5rem;
+  line-height: 1.6;
+}
+
+/* Raised from a decorative grey so the example text clears 4.5:1. */
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(247, 245, 239, 0.58);
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-bottom-color: rgba(247, 245, 239, 0.45);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--c-champagne);
+}
+
+/* Keep a visible ring for keyboard users on top of the underline change. */
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid var(--c-champagne);
+  outline-offset: 4px;
+}
+
+/* Native select needs its own arrow once the chrome is stripped. */
+.field select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, rgba(247, 245, 239, 0.7) 50%),
+                    linear-gradient(135deg, rgba(247, 245, 239, 0.7) 50%, transparent 50%);
+  background-position: right 0.75rem center, right 0.4rem center;
+  background-size: 0.35rem 0.35rem, 0.35rem 0.35rem;
+  background-repeat: no-repeat;
+  padding-right: 1.6rem;
+}
+
+.field select option {
+  /* Options render in the OS palette; force readable colours. */
+  background: var(--c-forest-deep);
+  color: var(--c-ivory);
+}
+
+/* Date inputs render their own icon; keep it visible against the dark panel. */
+.field input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+/* --- Validation ----------------------------------------------------------- */
+.field[data-invalid='true'] input,
+.field[data-invalid='true'] textarea {
+  border-bottom-color: #e2a08a;
+}
+
+.field__error {
+  font-size: var(--t-small);
+  color: #eeb49f;
+  line-height: 1.4;
+}
+
+.form__submit {
+  margin-top: var(--s-5);
+}
+
+.form__submit .button {
+  background: var(--c-ivory);
+  color: var(--c-forest-deep);
+  border-color: var(--c-ivory);
+}
+
+.form__submit .button:hover:not(:disabled),
+.form__submit .button:focus-visible:not(:disabled) {
+  background: var(--c-champagne);
+  border-color: var(--c-champagne);
+  color: var(--c-forest-deep);
+}
+
+/* --- Status messages ------------------------------------------------------- */
+.form__status {
+  margin-top: var(--s-3);
+  font-size: var(--t-small);
+  line-height: 1.6;
+  color: rgba(247, 245, 239, 0.8);
+}
+
+.form__status:empty {
+  display: none;
+}
+
+.form__status--error {
+  color: #eeb49f;
+}
+
+/* The WhatsApp placeholder warning. Deliberately plain and obvious: this is a
+   build-time notice for the client, not decoration for the visitor. */
+.form__placeholder-note {
+  margin-top: var(--s-4);
+  padding: var(--s-3);
+  border: 1px dashed rgba(201, 173, 123, 0.5);
+  font-size: var(--t-small);
+  line-height: 1.6;
+  color: rgba(247, 245, 239, 0.74);
+}
+
+.form__placeholder-note strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--c-champagne);
+  font-weight: 500;
+  font-size: var(--t-micro);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+}
+
+.form__copy-area {
+  margin-top: var(--s-3);
+  width: 100%;
+  background: rgba(13, 32, 26, 0.6);
+  color: rgba(247, 245, 239, 0.86);
+  border: 1px solid var(--line-light-soft);
+  padding: var(--s-3);
+  font-size: var(--t-small);
+  font-family: var(--font-text);
+  line-height: 1.6;
+  resize: vertical;
+}
